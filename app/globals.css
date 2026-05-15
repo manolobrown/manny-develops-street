@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/* next-themes writes data-theme on <html>; we accept it on either html or body */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Design tokens — ported verbatim from design_handoff_photography_portfolio/
+   hybrid.css. The --hp-* vars are the single source of truth and flip on
+   dark mode. Tailwind utilities are exposed through @theme inline so they
+   resolve to the current theme at runtime.
+   ──────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --hp-bg:        #f5f2ec;
+  --hp-bg-2:      #ebe6dc;
+  --hp-fg:        #18140f;
+  --hp-fg-2:      #4a443c;
+  --hp-fg-3:      #8a8378;
+  --hp-line:      #18140f;
+  --hp-line-soft: rgba(24, 20, 15, 0.16);
+  --hp-line-hair: rgba(24, 20, 15, 0.10);
+  --hp-accent:    #c84e1e;
+  --hp-paper:     #fdfbf6;
+  --hp-dark:      #14110d;
+  --hp-dark-fg:   #f0ece3;
+
+  --hp-pad:       clamp(20px, 4vw, 56px);
+  --hp-pad-y:     clamp(80px, 9vw, 140px);
+  --hp-rad:       0px;
+  --hp-t:         260ms cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  --hp-bg:        #0e0c09;
+  --hp-bg-2:      #181410;
+  --hp-fg:        #f0ece3;
+  --hp-fg-2:      #b8b0a3;
+  --hp-fg-3:      #6f685c;
+  --hp-line:      #f0ece3;
+  --hp-line-soft: rgba(240, 236, 227, 0.16);
+  --hp-line-hair: rgba(240, 236, 227, 0.08);
+  --hp-paper:     #14110d;
+  --hp-dark:      #f5f2ec;
+  --hp-dark-fg:   #18140f;
+}
+
+@theme inline {
+  --color-bg:        var(--hp-bg);
+  --color-bg-2:      var(--hp-bg-2);
+  --color-ink:       var(--hp-fg);
+  --color-ink-2:     var(--hp-fg-2);
+  --color-ink-3:     var(--hp-fg-3);
+  --color-paper:     var(--hp-paper);
+  --color-line:      var(--hp-line);
+  --color-line-soft: var(--hp-line-soft);
+  --color-line-hair: var(--hp-line-hair);
+  --color-accent:    var(--hp-accent);
+  --color-dark:      var(--hp-dark);
+  --color-dark-fg:   var(--hp-dark-fg);
+
+  --font-serif: var(--font-newsreader), "Times New Roman", Georgia, serif;
+  --font-sans:  var(--font-manrope), system-ui, sans-serif;
+  --font-mono:  var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --spacing-pad:   var(--hp-pad);
+  --spacing-pad-y: var(--hp-pad-y);
+
+  --ease-editorial: cubic-bezier(0.2, 0.6, 0.2, 1);
+
+  --aspect-zine: 7 / 9;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Base
+   ──────────────────────────────────────────────────────────────────────── */
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  background: var(--hp-bg);
+  color: var(--hp-fg);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background var(--hp-t), color var(--hp-t);
+}
+
+img { max-width: 100%; display: block; }
+
+::selection { background: var(--hp-accent); color: #fff; }
+
+/* Editorial small-caps mono label — used for § NN, masthead, chip text */
+.mono-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* Editorial accent — burnt orange italic emphasis on display type */
+em { color: var(--hp-accent); font-style: italic; }
+
+@keyframes so-rise {
+  from { opacity: 0; transform: translate(-50%, 24px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
