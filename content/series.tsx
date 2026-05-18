@@ -49,6 +49,8 @@ export const SERIES: Series[] = [
     category: "Ongoing · Nights · Manhattan",
     description:
       "Manhattan after 10 PM, weeknights only. Less about neon — more about what's left of a block when the foot traffic clears.",
+    longDescription:
+      "Started after a year of avoiding Manhattan at night and realizing the avoidance was the interesting part. Hard rules: 10 PM to 1 AM, weeknights only — weekends cover too easily — and roughly one frame in four survives the cull.",
     image: "/images/photos/night.jpg",
     alt: "After Dark",
     frames: "86",
@@ -64,6 +66,8 @@ export const SERIES: Series[] = [
     category: "Winter mornings · Midtown",
     description:
       "Steam vents between 28th and 42nd, January & February only. Industrial atmosphere, soft highlights, the city exhaling.",
+    longDescription:
+      "A series that only exists from January 15 to February 28. Con Ed vents read cleanest below 25°F with no wind, so I scout from 6 AM most mornings and shoot whatever the air gives me between 28th and 42nd. Two winters in, the keeper rate has been steady at about one frame per outing.",
     image: "/images/photos/steam.jpg",
     alt: "Steam City",
     frames: "72",
@@ -79,6 +83,8 @@ export const SERIES: Series[] = [
     category: "Hard light · Tribeca / Chambers",
     description:
       "Geometry, when the angle of the sun does most of the work. The series I shoot when I want to think less and look more.",
+    longDescription:
+      "Self-imposed rules keep the series honest: no people unless they pass through the frame the way a shadow would, no color editing past white balance, nothing that requires waiting more than ninety seconds for the light to do its thing. Two and a half years in, the keeper-to-final ratio sits around 4:1.",
     image: "/images/photos/shadow.jpg",
     alt: "Shadow Play",
     frames: "109",
@@ -94,6 +100,8 @@ export const SERIES: Series[] = [
     category: "After rain · 14th St.",
     description:
       "A standing invitation to be out the door within forty minutes of a spring rainstorm ending. The puddles are the studio.",
+    longDescription:
+      "Forty-minute window after a spring rain stops, bag packed by the door from March through May. The forecast has produced more false alarms than actual outings — but 14th Street's bus lanes hold water better than anywhere else I've found in Manhattan, so most of the keepers are within four blocks of Union Square.",
     image: "/images/photos/reflection.jpg",
     alt: "Reflections",
     frames: "53",
@@ -109,6 +117,8 @@ export const SERIES: Series[] = [
     category: "Snow days · All boroughs",
     description:
       "One frame for every snowfall over two inches, in the same six locations, for as many winters as it takes. A project measured in seasons, not weeks.",
+    longDescription:
+      "Three in Manhattan, two in Brooklyn, one in the Bronx. The constraint is the point — same locations, same intent, only the weather changes — which makes the project read as a longitudinal study rather than a portfolio. Three winters in, the average is six frames per year and another decade before it's anything I'd want to print as a book.",
     image: "/images/photos/snow.jpg",
     alt: "White Out",
     frames: "29",
