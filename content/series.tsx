@@ -40,6 +40,23 @@ export const SERIES: Series[] = [
     edit: "38 final",
     status: <em>Zine pending</em>,
     started: "Feb 2024",
+    galleryFrames: [
+      {
+        src: "/images/photos/window-2.jpg",
+        alt: "Subway window, evening commute",
+        caption: "Frame 04 / 38 · Q Train northbound · Mar 2024",
+      },
+      {
+        src: "/images/photos/subway.jpg",
+        alt: "Subway car interior, 8:47 AM",
+        caption: "Frame 19 / 38 · 4 Train, 14th St. · Aug 2024",
+      },
+      {
+        src: "/images/photos/reflection.jpg",
+        alt: "Reflection through subway window",
+        caption: "Frame 27 / 38 · L Train, 3rd Ave. · Nov 2024",
+      },
+    ],
   },
   {
     slug: "after-dark",
