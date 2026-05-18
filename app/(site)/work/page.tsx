@@ -36,7 +36,11 @@ export default function WorkPage() {
               ${i % 2 === 1 ? "[&>*:first-child]:md:order-2" : ""}
             `}
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden bg-bg-2 group">
+            <Link
+              href={`/work/${s.slug}`}
+              aria-label={`View ${s.titleText}`}
+              className="group relative block aspect-[4/3] w-full overflow-hidden bg-bg-2"
+            >
               <Image
                 src={s.image}
                 alt={s.alt}
@@ -44,7 +48,7 @@ export default function WorkPage() {
                 sizes="(min-width: 768px) 50vw, 100vw"
                 className="object-cover transition-transform duration-[700ms] ease-editorial group-hover:scale-[1.03]"
               />
-            </div>
+            </Link>
             <div className="flex flex-col gap-[18px]">
               <div className="flex items-baseline justify-between font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
                 <span className="font-semibold text-accent">{s.number}</span>
@@ -71,7 +75,7 @@ export default function WorkPage() {
               </dl>
               <div>
                 <Link
-                  href="#"
+                  href={`/work/${s.slug}`}
                   className="
                     inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5
                     font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-ink
