@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { ClosingCta } from "@/components/ui/ClosingCta";
+import { PricingGuideForm } from "@/components/forms/PricingGuideForm";
 import { TIERS, PROCESS, FAQS, PORTRAITS_SAMPLES } from "@/content/tiers";
 
 export const metadata = { title: "Portraits" };
@@ -166,6 +167,22 @@ export default function PortraitsPage() {
           Every booking starts with a sales call — 30 minutes, coffee, no contract. Studio rentals at Lift (Chelsea), Studio M (Brooklyn), or Pier 59 available if you&apos;d rather not shoot on location.
         </p>
       </section>
+
+      {/* Pricing guide PDF — Kit lead magnet */}
+      <aside className="mx-pad my-pad-y grid items-center gap-12 border border-line bg-paper p-9 md:grid-cols-[1fr_1fr] md:p-12">
+        <div className="flex flex-col gap-4">
+          <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-3">
+            Pricing guide
+          </span>
+          <h3 className="m-0 font-serif font-extralight text-[clamp(32px,4vw,52px)] leading-[1.05] tracking-[-0.025em]">
+            Take it <em>with you</em>.
+          </h3>
+          <p className="m-0 max-w-[48ch] font-serif font-light text-[17px] leading-[1.55] text-ink-2">
+            A one-page PDF of the three tiers, the process, and the questions clients ask before booking. Useful for forwarding to a partner or sitting with the numbers for a day.
+          </p>
+        </div>
+        <PricingGuideForm />
+      </aside>
 
       {/* FAQ */}
       <section className="px-pad py-pad-y">
