@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { ClosingCta } from "@/components/ui/ClosingCta";
 import { PrintsFilter } from "@/components/shop/PrintsFilter";
+import { PresetsForm } from "@/components/forms/PresetsForm";
 import { PRESETS } from "@/content/shop";
 
 export const metadata = { title: "Shop" };
@@ -78,17 +79,7 @@ export default function ShopPage() {
                 </li>
               ))}
             </ul>
-            <Link
-              href="#"
-              className="
-                mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-line px-5 py-3
-                font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-ink
-                transition-colors duration-[260ms] ease-editorial
-                hover:bg-ink hover:text-bg
-              "
-            >
-              Download free pack <span aria-hidden>↗</span>
-            </Link>
+            <PresetsForm />
           </article>
 
           {/* Full pack — featured */}
