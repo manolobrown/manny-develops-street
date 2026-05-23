@@ -1,9 +1,19 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { resend, CONTACT_TO, CONTACT_FROM, escapeHtml } from "@/lib/email";
 
-const NewsletterSchema = z.object({
+const FORM_IDS: Record<string, string | undefined> = {
+  newsletter: process.env.KIT_FORM_NEWSLETTER_ID,
+  sticky: process.env.KIT_FORM_STICKY_ID,
+  presets: process.env.KIT_FORM_PRESETS_ID,
+  "pricing-guide": process.env.KIT_FORM_PRICING_GUIDE_ID,
+};
+
+const KitFormName = z.enum(["newsletter", "sticky", "presets", "pricing-guide"]);
+
+const Body = z.object({
   email: z.string().trim().email().max(320),
+  form: KitFormName.default("newsletter"),
+  firstName: z.string().trim().max(120).optional(),
 });
 
 export async function POST(request: Request) {
@@ -17,31 +27,42 @@ export async function POST(request: Request) {
     payload = Object.fromEntries(form.entries());
   }
 
-  const parsed = NewsletterSchema.safeParse(payload);
+  const parsed = Body.safeParse(payload);
   if (!parsed.success) {
-    return NextResponse.json({ error: "invalid_email" }, { status: 400 });
+    return NextResponse.json({ error: "invalid_input" }, { status: 400 });
   }
 
-  const { email } = parsed.data;
+  const { email, form, firstName } = parsed.data;
+  const formId = FORM_IDS[form];
+  const apiKey = process.env.KIT_API_KEY;
 
-  // No Resend Audience wired up yet — relay as a plain notification so the
-  // photographer gets the address and can add it manually until the audience
-  // integration ships.
-  if (!resend) {
-    console.log("[newsletter] (no resend key — logging only)", { email });
+  if (!apiKey || !formId) {
+    console.log("[newsletter] missing kit config — logging only", { email, form, hasKey: !!apiKey, hasFormId: !!formId });
     return NextResponse.json({ ok: true, mode: "logged" });
   }
 
   try {
-    await resend.emails.send({
-      from: CONTACT_FROM,
-      to: CONTACT_TO,
-      subject: "[Site] Newsletter signup",
-      html: `<p>New Sunday-letter signup: <strong>${escapeHtml(email)}</strong></p>`,
+    const res = await fetch(`https://api.kit.com/v3/forms/${formId}/subscribe`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        api_key: apiKey,
+        email,
+        first_name: firstName,
+      }),
     });
-    return NextResponse.json({ ok: true });
+
+    if (!res.ok) {
+      const text = await res.text();
+      console.error("[newsletter] kit subscribe failed", res.status, text);
+      return NextResponse.json({ error: "subscribe_failed" }, { status: 502 });
+    }
+
+    const data = (await res.json()) as { subscription?: { state?: string } };
+    const state = data.subscription?.state ?? "unknown";
+    return NextResponse.json({ ok: true, state });
   } catch (err) {
-    console.error("[newsletter] resend send failed", err);
-    return NextResponse.json({ error: "send_failed" }, { status: 502 });
+    console.error("[newsletter] kit fetch threw", err);
+    return NextResponse.json({ error: "subscribe_failed" }, { status: 502 });
   }
 }

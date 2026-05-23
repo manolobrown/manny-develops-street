@@ -31,7 +31,16 @@ export function StickyOptin() {
     e.preventDefault();
     const value = email.trim();
     if (!value) return;
-    // TODO: POST to /api/newsletter once wired.
+    try {
+      await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: value, form: "sticky" }),
+      });
+    } catch {
+      // Show the thank-you regardless — the subscriber experience shouldn't
+      // hinge on a flaky network call. The server logs the failure.
+    }
     setState("thanks");
     setTimeout(dismiss, 1400);
   };

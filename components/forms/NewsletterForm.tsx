@@ -9,9 +9,14 @@ export function NewsletterForm() {
     e.preventDefault();
     setState("sending");
     const form = e.currentTarget;
-    const data = new FormData(form);
+    const email = (new FormData(form).get("email") as string | null)?.trim();
+    if (!email) return setState("error");
     try {
-      const res = await fetch("/api/newsletter", { method: "POST", body: data });
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, form: "newsletter" }),
+      });
       if (!res.ok) throw new Error();
       setState("sent");
       form.reset();
