@@ -62,9 +62,18 @@ export default async function SeriesPage(props: PageProps<"/work/[slug]">) {
             <h1 className="m-0 max-w-[16ch] text-balance font-serif font-extralight text-[clamp(54px,9vw,140px)] leading-[0.9] tracking-[-0.035em]">
               {series.title}
             </h1>
-            <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] opacity-90">
-              {series.frames} frames · {series.started}
-            </span>
+            {(() => {
+              const parts: string[] = [];
+              if (series.frames && series.frames !== "—" && series.frames !== "Scoping") {
+                parts.push(`${series.frames} frames`);
+              }
+              if (series.started && series.started !== "—") parts.push(series.started);
+              return parts.length > 0 ? (
+                <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] opacity-90">
+                  {parts.join(" · ")}
+                </span>
+              ) : null;
+            })()}
           </figcaption>
         </figure>
       </section>
@@ -94,12 +103,14 @@ export default async function SeriesPage(props: PageProps<"/work/[slug]">) {
                 ...(series.locations?.length
                   ? [{ t: "Locations", d: series.locations.join(" · ") as React.ReactNode }]
                   : []),
-              ].map(({ t, d }) => (
-                <div key={t} className="flex flex-col gap-1">
-                  <dt className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">{t}</dt>
-                  <dd className="m-0 font-serif text-[17px] font-light text-ink">{d}</dd>
-                </div>
-              ))}
+              ]
+                .filter(({ d }) => d !== "—")
+                .map(({ t, d }) => (
+                  <div key={t} className="flex flex-col gap-1">
+                    <dt className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">{t}</dt>
+                    <dd className="m-0 font-serif text-[17px] font-light text-ink">{d}</dd>
+                  </div>
+                ))}
             </dl>
           </aside>
         </div>

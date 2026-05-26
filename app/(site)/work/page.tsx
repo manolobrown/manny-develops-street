@@ -27,7 +27,19 @@ export default function WorkPage() {
       />
 
       <section className="px-pad">
-        {SERIES.map((s, i) => (
+        {SERIES.map((s, i) => {
+          const stats = [
+            { t: "Frames", d: s.frames as React.ReactNode },
+            { t: "Edit", d: s.edit as React.ReactNode },
+            { t: "Status", d: s.status },
+            { t: "Started", d: s.started as React.ReactNode },
+          ].filter(({ d }) => d !== "—");
+          const statCols =
+            stats.length <= 2 ? "grid-cols-2" :
+            stats.length === 3 ? "grid-cols-2 md:grid-cols-3" :
+            "grid-cols-2 md:grid-cols-4";
+
+          return (
           <article
             key={s.number}
             className={`
@@ -60,13 +72,8 @@ export default function WorkPage() {
               <p className="m-0 max-w-[50ch] font-serif font-light text-[17px] leading-[1.5] text-ink-2">
                 {s.description}
               </p>
-              <dl className="grid grid-cols-2 gap-x-8 gap-y-3 border-t border-line-hair pt-4 md:grid-cols-4">
-                {[
-                  { t: "Frames", d: s.frames as React.ReactNode },
-                  { t: "Edit", d: s.edit as React.ReactNode },
-                  { t: "Status", d: s.status },
-                  { t: "Started", d: s.started as React.ReactNode },
-                ].map(({ t, d }) => (
+              <dl className={`grid gap-x-8 gap-y-3 border-t border-line-hair pt-4 ${statCols}`}>
+                {stats.map(({ t, d }) => (
                   <div key={t} className="flex flex-col gap-1">
                     <dt className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">{t}</dt>
                     <dd className="m-0 font-serif text-[16px] font-light text-ink">{d}</dd>
@@ -88,7 +95,8 @@ export default function WorkPage() {
               </div>
             </div>
           </article>
-        ))}
+          );
+        })}
       </section>
 
       <section id="editorial" className="px-pad pb-pad-y">
