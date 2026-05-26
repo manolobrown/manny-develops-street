@@ -13,7 +13,7 @@ export default function PortraitsPage() {
       {/* Two-column hero */}
       <section className="grid items-stretch md:grid-cols-[1.1fr_1fr]">
         <div className="flex flex-col gap-10 border-b border-line-soft px-pad pt-7 pb-14 md:border-b-0 md:border-r">
-          <div className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-line pb-7 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-2">
+          <div className="grid grid-cols-[auto_1fr_1fr] items-center border-b border-line pb-7 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-2">
             <div>
               <span className="font-serif text-[32px] font-light italic tracking-[-0.02em] leading-none text-ink normal-case [text-transform:none]">
                 § 03
