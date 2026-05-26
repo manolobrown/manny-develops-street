@@ -9,7 +9,7 @@ const FACTS: Array<[string, React.ReactNode]> = [
   ["Member", "NYPPA · ICP · ASMP"],
   ["Insurance", "$2M general liability, full year"],
   ["Studio partners", "Lift · Studio M · Pier 59"],
-  ["Camera", "Leica Q3 · Fujifilm X-T5"],
+  ["Camera", "Leica Q343 · Nikon Z8"],
   ["Light", "Godox AD200 · 36″ octa"],
   ["Catalog", "Lightroom · 280,515 frames"],
   ["Billing", "Honeybook · Net 15"],
@@ -20,7 +20,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
-        num="06"
+        num="05"
         mastCenter="About · Statement · Press"
         mastRight={<span>Working since 2016</span>}
         title={<>Manuel <em>Peña</em></>}
@@ -39,7 +39,7 @@ export default function AboutPage() {
             />
           </div>
           <figcaption className="mt-3 font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">
-            Self-portrait · Inwood · Aug 2024
+            Self-portrait · NYC · Aug 2024
           </figcaption>
         </figure>
 
@@ -59,47 +59,47 @@ export default function AboutPage() {
             </p>
           </section>
 
-          <section className="flex flex-col gap-4 border-t border-line-hair pt-10">
-            <h2 className="m-0 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-3">
-              Currently
-            </h2>
-            <p className="m-0 font-serif font-light text-[17px] leading-[1.55] text-ink-2">
-              <em>Year 1, Month 4</em> of the hybrid plan. Vol. 01 of the zine (<em>Through the Glass</em>) is at press in Brooklyn, shipping June 14. Workshops are running 2× monthly with a waitlist on Soho dates. Three Signature portrait clients booked through August, one editorial pitch out the door to The Cut.
-            </p>
-            <p className="m-0 font-serif font-light text-[17px] leading-[1.55] text-ink-2">
-              Looking for: one founder profile, one author working on a book jacket, and one creative-industry partner who wants a six-frame editorial-style piece for a press kit. Reply within two business days.
-            </p>
-          </section>
+          {/*<section className="flex flex-col gap-4 border-t border-line-hair pt-10">*/}
+          {/*  <h2 className="m-0 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-3">*/}
+          {/*    Currently*/}
+          {/*  </h2>*/}
+          {/*  <p className="m-0 font-serif font-light text-[17px] leading-[1.55] text-ink-2">*/}
+          {/*    <em>Year 1, Month 4</em> of the hybrid plan. Vol. 01 of the zine (<em>Through the Glass</em>) is at press in Brooklyn, shipping June 14. Workshops are running 2× monthly with a waitlist on Soho dates. Three Signature portrait clients booked through August, one editorial pitch out the door to The Cut.*/}
+          {/*  </p>*/}
+          {/*  <p className="m-0 font-serif font-light text-[17px] leading-[1.55] text-ink-2">*/}
+          {/*    Looking for: one founder profile, one author working on a book jacket, and one creative-industry partner who wants a six-frame editorial-style piece for a press kit. Reply within two business days.*/}
+          {/*  </p>*/}
+          {/*</section>*/}
 
           <section className="flex flex-col gap-4 border-t border-line-hair pt-10">
             <h2 className="m-0 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-3">
               Bio (short)
             </h2>
             <p className="m-0 font-serif font-light text-[17px] leading-[1.55] text-ink-2">
-              Manuel Peña (b. 1989) is a New York street &amp; documentary photographer working primarily with personal-branding portrait clients. His ongoing series have been featured in <em>New York Magazine</em>, <em>Curbed</em>, <em>Document Journal</em>, and <em>The Cut</em>. He is a member of the NYPPA, ICP, and ASMP. He lives in Inwood.
+              Manuel Peña (b. 1979) is a New York street &amp; documentary photographer working primarily with personal-branding portrait clients. His goal is to tell stories using light, shadow, composition and color. He only have one rule: Shoot anything that interests you and the pieces will fall in place.
             </p>
           </section>
 
-          <section className="flex flex-col gap-4 border-t border-line-hair pt-10">
-            <h2 className="m-0 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-3">
-              Selected press &amp; credits
-            </h2>
-            <PressList items={PRESS} />
-          </section>
+          {/*<section className="flex flex-col gap-4 border-t border-line-hair pt-10">*/}
+          {/*  <h2 className="m-0 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-3">*/}
+          {/*    Selected press &amp; credits*/}
+          {/*  </h2>*/}
+          {/*  <PressList items={PRESS} />*/}
+          {/*</section>*/}
 
-          <section className="flex flex-col gap-4 border-t border-line-hair pt-10">
-            <h2 className="m-0 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-3">
-              Working details
-            </h2>
-            <dl className="grid grid-cols-1 gap-x-10 gap-y-3 md:grid-cols-2">
-              {FACTS.map(([k, v]) => (
-                <div key={k} className="flex flex-col gap-1 border-b border-line-hair py-3">
-                  <dt className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">{k}</dt>
-                  <dd className="m-0 font-serif font-light text-[17px] text-ink">{v}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
+          {/*<section className="flex flex-col gap-4 border-t border-line-hair pt-10">*/}
+          {/*  <h2 className="m-0 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-3">*/}
+          {/*    Working details*/}
+          {/*  </h2>*/}
+          {/*  <dl className="grid grid-cols-1 gap-x-10 gap-y-3 md:grid-cols-2">*/}
+          {/*    {FACTS.map(([k, v]) => (*/}
+          {/*      <div key={k} className="flex flex-col gap-1 border-b border-line-hair py-3">*/}
+          {/*        <dt className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">{k}</dt>*/}
+          {/*        <dd className="m-0 font-serif font-light text-[17px] text-ink">{v}</dd>*/}
+          {/*      </div>*/}
+          {/*    ))}*/}
+          {/*  </dl>*/}
+          {/*</section>*/}
         </div>
       </section>
     </>

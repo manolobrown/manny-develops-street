@@ -13,7 +13,7 @@ export default function ShopPage() {
   return (
     <>
       <PageHeader
-        num="05"
+        num="04"
         mastCenter="Shop · Prints & Presets"
         mastRight={
           <>
@@ -26,13 +26,13 @@ export default function ShopPage() {
 
       {/* § 05.A · Prints */}
       <section className="px-pad py-pad-y">
-        <SectionHead num="05.A" label="Fine-art prints" date="9 editions · Open + Limited" />
+        <SectionHead num="04.A" label="Fine-art prints" date="9 editions · Open + Limited" />
         <PrintsFilter />
       </section>
 
       {/* § 05.B · Presets */}
       <section id="presets" className="bg-paper px-pad py-pad-y">
-        <SectionHead num="05.B" label="Lightroom presets · Edit like me" date="10 presets · .xmp + .dng" />
+        <SectionHead num="04.B" label="Lightroom presets · Edit like me" date="10 presets · .xmp + .dng" />
 
         {/* Provenance story + 2x2 stats */}
         <div className="grid items-center gap-12 pt-10 md:grid-cols-[1.2fr_1fr]">
@@ -174,7 +174,7 @@ export default function ShopPage() {
 
       {/* § 05.C · Print details */}
       <section className="px-pad py-pad-y">
-        <SectionHead num="05.C" label="The print details" date="Paper · Editions · Shipping" />
+        <SectionHead num="04.C" label="The print details" date="Paper · Editions · Shipping" />
         <div className="grid gap-10 pt-10 md:grid-cols-3">
           {[
             {
@@ -209,7 +209,7 @@ export default function ShopPage() {
       </section>
 
       <ClosingCta
-        eyebrow="§ 05.D · Custom & commission"
+        eyebrow="§ 04.D · Custom & commission"
         headline={<>Looking for a <em>specific</em> frame?</>}
         body="The shop is a slice of the catalog. If you've seen a photo in the Work pages or in the Sunday letter and want it as a print, just ask — most frames can be made to order in a size that fits your wall."
         actions={[

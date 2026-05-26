@@ -9,9 +9,9 @@ import { PRINTS } from "@/content/shop";
 
 const INTENTS = [
   { letter: "A", id: "portrait", strong: "A portrait session", em: "Essentials · Signature · Executive" },
-  { letter: "B", id: "workshop", strong: "A workshop seat", em: "Public walk or full-day intensive" },
-  { letter: "C", id: "editorial", strong: "Editorial / press", em: "Pitch, license, or assignment" },
-  { letter: "D", id: "other", strong: "Something else", em: "Coffee, hello, collab, idea" },
+  // { letter: "B", id: "workshop", strong: "A workshop seat", em: "Public walk or full-day intensive" },
+  { letter: "B", id: "editorial", strong: "Editorial / press", em: "Pitch, license, or assignment" },
+  { letter: "C", id: "other", strong: "Something else", em: "Coffee, hello, collab, idea" },
 ] as const;
 
 type Intent = (typeof INTENTS)[number]["id"];

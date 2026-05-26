@@ -27,23 +27,24 @@ const PATHS = [
     meta: "From $1,495",
     cta: "See the tiers",
   },
-  {
-    href: "/workshops",
-    img: "/images/photos/steam.jpg",
-    alt: "Saturday workshop walk",
-    eyebrow: "C · 03",
-    role: "Saturdays",
-    title: <em>Workshops</em>,
-    body: "Three-hour neighborhood photo walks. Five to eight cameras, one opinionated edit, coffee at the end. $200/seat.",
-    meta: "Next: May 23 · 6 / 8 seats",
-    cta: "Reserve a seat",
-  },
+  // {
+  //   href: "/workshops",
+  //   img: "/images/photos/steam.jpg",
+  //   alt: "Saturday workshop walk",
+  //   eyebrow: "C · 03",
+  //   role: "Saturdays",
+  //   title: <em>Workshops</em>,
+  //   body: "Three-hour neighborhood photo walks. Five to eight cameras, one opinionated edit, coffee at the end. $200/seat.",
+  //   meta: "Next: May 23 · 6 / 8 seats",
+  //   cta: "Reserve a seat",
+  //   status: "Disabled"
+  // },
 ];
 
 const PREVIEW = [
   { img: "/images/photos/window.jpg", num: "01", cat: "Subway · Daily", title: <>Through the <em>Glass</em></> },
-  { img: "/images/photos/shadow.jpg", num: "04", cat: "Chambers · Hard light", title: <>Shadow <em>Play</em></> },
-  { img: "/images/photos/reflection.jpg", num: "05", cat: "14th St. · After rain", title: <em>Reflections</em> },
+  { img: "/images/photos/shadow.jpg", num: "02", cat: "NYC at Night · Hard light", title: <>Shadow <em>Play</em></> },
+  { img: "/images/photos/reflection.jpg", num: "03", cat: "Astor Place. · After rain", title: <em>Reflections</em> },
 ];
 
 export default function HomePage() {
@@ -120,7 +121,7 @@ export default function HomePage() {
         {/* Three paths */}
         <nav
           aria-label="Choose a path"
-          className="grid gap-7 border-b border-line py-16 pb-20 md:grid-cols-3"
+          className="grid gap-7 border-b border-line py-16 pb-20 md:grid-cols-2"
         >
           {PATHS.map((p) => (
             <Link
@@ -174,7 +175,7 @@ export default function HomePage() {
           </em>
         </div>
         <p className="m-0 text-balance font-serif font-light text-[clamp(20px,2.2vw,28px)] leading-[1.35] tracking-[-0.012em]">
-          Vol. 01 of the zine, <em>Through the Glass</em>, is at press in Brooklyn and ships <em>June 14</em>. Reservations open until the run sells through.
+          Vol. 01 of the zine, <em>Through the Glass</em>, is currently <em>in progress</em>. Reservations open.
         </p>
         <Link
           href="#newsletter"
@@ -228,7 +229,7 @@ export default function HomePage() {
 
       {/* ───── ZINE + NEWSLETTER ───── */}
       <section id="newsletter" className="border-b border-line-soft bg-paper px-pad pb-pad-y">
-        <SectionHead num="04" label="Zine & Sunday letter" date="Vol. 01 · ships June 14" />
+        <SectionHead num="04" label="Zine & Sunday letter" date="Vol. 01 · TBD" />
 
         <div className="grid items-start gap-20 pt-7 md:grid-cols-2">
           {/* Cover */}
@@ -247,7 +248,7 @@ export default function HomePage() {
               />
               <div className="absolute inset-0 flex flex-col px-9 py-10 text-white">
                 <span className="font-mono text-[11px] uppercase tracking-[0.18em] opacity-90">
-                  Vol. 01 · Spring 2026
+                  Vol. 01 · TBD
                 </span>
                 <span className="mt-auto text-balance font-serif font-light text-[clamp(48px,6vw,84px)] leading-[0.95] tracking-[-0.03em]">
                   <em className="not-italic [font-style:italic] text-white">Through</em> the <em className="not-italic [font-style:italic] text-white">Glass</em>
@@ -280,7 +281,7 @@ export default function HomePage() {
               </span>
               <NewsletterForm />
               <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-ink-3">
-                ~ 800 readers · No segmentation, no sales sequence · Unsubscribe at the bottom of every email
+                ~ No segmentation, no sales sequence · Unsubscribe at the bottom of every email
               </span>
             </div>
           </div>

@@ -8,7 +8,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader
-        num="07"
+        num="06"
         mastCenter="Inquiries · Sales calls · Editorial"
         mastRight={<span>Reply in 2 business days</span>}
         title={<>Let&apos;s <em>walk</em> first.</>}
@@ -45,7 +45,7 @@ export default function ContactPage() {
               Where I work
             </h2>
             <p className="m-0 font-serif font-light text-[17px] leading-[1.55] text-ink-2">
-              Based in Inwood, NYC.
+              Based in Manhattan, NYC.
             </p>
             <p className="m-0 font-serif font-light text-[17px] leading-[1.55] text-ink-2">
               Most sessions are on location — your office, a rooftop, a sidewalk between meetings. Studio rentals available at Lift (Chelsea), Studio M (Brooklyn), or Pier 59.
