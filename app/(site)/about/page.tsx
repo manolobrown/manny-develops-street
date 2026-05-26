@@ -20,7 +20,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
-        num="05"
+        num="06"
         mastCenter="About · Statement · Press"
         mastRight={<span>Working since 2016</span>}
         title={<>Manuel <em>Peña</em></>}
