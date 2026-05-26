@@ -4,6 +4,7 @@ import { resend, CONTACT_TO, CONTACT_FROM, escapeHtml } from "@/lib/email";
 
 const ContactSchema = z.object({
   intent: z.enum(["portrait", "workshop", "editorial", "other"]).optional(),
+  context: z.string().trim().max(400).optional().or(z.literal("")),
   name: z.string().trim().min(1, "Name is required").max(200),
   email: z.string().trim().email("Valid email required").max(320),
   company: z.string().trim().max(200).optional().or(z.literal("")),
@@ -31,9 +32,12 @@ export async function POST(request: Request) {
   }
 
   const data = parsed.data;
-  const subject = `[Site] ${data.intent ? `${data.intent} inquiry` : "Inquiry"} — ${data.name}`;
+  const intentLabel = data.intent ? `${data.intent} inquiry` : "Inquiry";
+  const contextSuffix = data.context ? ` · ${data.context}` : "";
+  const subject = `[Site] ${intentLabel}${contextSuffix} — ${data.name}`;
   const html = `
     <h2>New inquiry — ${escapeHtml(data.intent ?? "general")}</h2>
+    ${data.context ? `<p><strong>Re:</strong> ${escapeHtml(data.context)}</p>` : ""}
     <p><strong>From:</strong> ${escapeHtml(data.name)} &lt;${escapeHtml(data.email)}&gt;</p>
     ${data.company ? `<p><strong>Company:</strong> ${escapeHtml(data.company)}</p>` : ""}
     ${data.when ? `<p><strong>Timing:</strong> ${escapeHtml(data.when)}</p>` : ""}

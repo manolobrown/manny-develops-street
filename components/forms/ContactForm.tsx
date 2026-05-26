@@ -1,7 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { SERIES } from "@/content/series";
+import { TIERS } from "@/content/tiers";
+import { WORKSHOPS } from "@/content/workshops";
+import { PRINTS } from "@/content/shop";
 
 const INTENTS = [
   { letter: "A", id: "portrait", strong: "A portrait session", em: "Essentials · Signature · Executive" },
@@ -10,12 +14,84 @@ const INTENTS = [
   { letter: "D", id: "other", strong: "Something else", em: "Coffee, hello, collab, idea" },
 ] as const;
 
+type Intent = (typeof INTENTS)[number]["id"];
+
+function deriveIntent(type: string | null, tier: string | null): Intent | null {
+  if (tier) return "portrait";
+  switch (type) {
+    case "portrait":
+      return "portrait";
+    case "workshop":
+      return "workshop";
+    case "editorial":
+      return "editorial";
+    case "print":
+    case "preset-pack":
+    case "other":
+      return "other";
+    default:
+      return null;
+  }
+}
+
+function deriveContext(args: {
+  type: string | null;
+  tier: string | null;
+  series: string | null;
+  date: string | null;
+  printId: string | null;
+  kind: string | null;
+}): string | null {
+  const { type, tier, series, date, printId, kind } = args;
+  if (tier) {
+    const t = TIERS.find((x) => x.cta.href.includes(`tier=${tier}`));
+    return t ? `${t.name} portrait tier` : null;
+  }
+  if (series) {
+    const s = SERIES.find((x) => x.slug === series);
+    return s ? `${s.titleText} series` : null;
+  }
+  if (date) {
+    const w = WORKSHOPS.find((x) => x.href.includes(`date=${date}`));
+    return w ? `${w.date} workshop` : null;
+  }
+  if (printId) {
+    const p = PRINTS.find((x) => x.id === printId);
+    return p ? `${p.id} · ${p.title.replace(/\.$/, "")}` : null;
+  }
+  if (type === "preset-pack") return "Lightroom presets · Full pack";
+  if (kind === "private") return "Private workshop group";
+  return null;
+}
+
 export function ContactForm() {
   const params = useSearchParams();
-  const initialIntent =
-    params.get("type") ||
-    (params.get("tier") ? "portrait" : null);
-  const [intent, setIntent] = useState<string | null>(initialIntent);
+  const typeParam = params.get("type");
+  const tierParam = params.get("tier");
+  const seriesParam = params.get("series");
+  const dateParam = params.get("date");
+  const printIdParam = params.get("id");
+  const kindParam = params.get("kind");
+
+  const initialIntent = useMemo(
+    () => deriveIntent(typeParam, tierParam),
+    [typeParam, tierParam],
+  );
+
+  const context = useMemo(
+    () =>
+      deriveContext({
+        type: typeParam,
+        tier: tierParam,
+        series: seriesParam,
+        date: dateParam,
+        printId: printIdParam,
+        kind: kindParam,
+      }),
+    [typeParam, tierParam, seriesParam, dateParam, printIdParam, kindParam],
+  );
+
+  const [intent, setIntent] = useState<Intent | null>(initialIntent);
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -24,6 +100,7 @@ export function ContactForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
     if (intent) data.set("intent", intent);
+    if (context) data.set("context", context);
     try {
       const res = await fetch("/api/contact", { method: "POST", body: data });
       if (!res.ok) throw new Error();
@@ -36,6 +113,23 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-10">
+      {context && (
+        <div className="-mb-5 flex items-baseline justify-between gap-3 border border-line bg-paper px-5 py-3">
+          <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-3">
+            Re:
+          </span>
+          <span className="flex-1 font-serif italic text-[16px] text-ink">
+            {context}
+          </span>
+          <a
+            href="/contact"
+            className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3 hover:text-accent"
+          >
+            Clear
+          </a>
+        </div>
+      )}
+
       {/* Intent picker */}
       <div className="flex flex-col gap-5">
         <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-3">

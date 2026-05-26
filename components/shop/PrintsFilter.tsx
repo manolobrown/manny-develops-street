@@ -55,7 +55,7 @@ export function PrintsFilter() {
         {visible.map((p) => (
           <Link
             key={p.id}
-            href={`/contact?intent=print&id=${p.id}`}
+            href={`/contact?type=print&id=${p.id}`}
             className="group flex flex-col gap-3 text-ink no-underline"
           >
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-bg-2">

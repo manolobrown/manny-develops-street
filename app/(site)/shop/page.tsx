@@ -108,7 +108,7 @@ export default function ShopPage() {
               ))}
             </ul>
             <Link
-              href="/contact?intent=preset-pack"
+              href="/contact?type=preset-pack"
               className="
                 mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-dark-fg px-5 py-3
                 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-dark

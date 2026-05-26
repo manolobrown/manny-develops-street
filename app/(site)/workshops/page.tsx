@@ -172,7 +172,7 @@ export default function WorkshopsPage() {
         body="iPhone or Leica, it doesn't matter. The looking is the work; the gear is just what you use to record it. Private group rates available for teams of 4+."
         actions={[
           { label: "Reserve a public walk", href: "/contact?type=workshop", primary: true },
-          { label: "Book a private group", href: "/contact?type=private" },
+          { label: "Book a private group", href: "/contact?type=workshop&kind=private" },
         ]}
       />
     </>
