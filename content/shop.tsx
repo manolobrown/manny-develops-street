@@ -11,14 +11,14 @@ export type Print = {
 };
 
 export const PRINTS: Print[] = [
-  { id: "P-001", image: "/images/photos/window.jpg", alt: "Through the Glass · Vol. 01", collection: "glass", collectionLabel: "Through the Glass", title: "Through the Glass · Vol. 01.", edition: "Open edition", sizes: ["8×10", "11×14", "16×20"], price: "$95" },
-  { id: "P-002", image: "/images/photos/shadow.jpg", alt: "Shadow Play · Chambers", collection: "shadow", collectionLabel: "Shadow Play", title: "Shadow Play · Chambers.", edition: "Open edition", sizes: ["8×10", "11×14", "16×20"], price: "$95" },
-  { id: "P-003", image: "/images/photos/steam.jpg", alt: "Steam, 5th & 28th", collection: "steam", collectionLabel: "Steam City", title: "Steam, 5th & 28th.", edition: "Open edition", sizes: ["11×14", "16×20", "24×36"], price: "$110" },
-  { id: "P-004", image: "/images/photos/subway.jpg", alt: "Subway, 8:47 AM", collection: "glass", collectionLabel: "Through the Glass", title: "Subway, 8:47 AM.", edition: "Open edition", sizes: ["8×10", "11×14", "16×20"], price: "$95" },
-  { id: "P-005", image: "/images/photos/night-4.jpg", alt: "Chevy, Mount Sinai", collection: "afterdark", collectionLabel: "After Dark", title: "Chevy, Mount Sinai.", edition: "Limited / 25", sizes: ["11×14", "16×20"], price: "$165" },
-  { id: "P-006", image: "/images/photos/reflection.jpg", alt: "Reflections · 14th St.", collection: "reflections", collectionLabel: "Reflections", title: "Reflections · 14th St.", edition: "Limited / 25", sizes: ["11×14", "16×20"], price: "$165" },
-  { id: "P-007", image: "/images/photos/night.jpg", alt: "Doyers St., after dark", collection: "afterdark", collectionLabel: "After Dark", title: "Doyers St., after dark.", edition: "Limited / 25", sizes: ["11×14", "16×20", "24×36"], price: "$165" },
-  { id: "P-008", image: "/images/photos/snow.jpg", alt: "White Out, January", collection: "whiteout", collectionLabel: "White Out", title: "White Out, January.", edition: "Seasonal / 30", sizes: ["8×10", "11×14", "16×20"], price: "$125" },
+  { id: "P-001", image: "/images/work/through-the-glass/through-the-glass-4.jpg", alt: "Through the Glass · Vol. 01", collection: "glass", collectionLabel: "Through the Glass", title: "Through the Glass · Vol. 01.", edition: "Open edition", sizes: ["8×10", "11×14", "16×20"], price: "$95" },
+  { id: "P-002", image: "/images/work/shadow-play/shadow-play-4.jpg", alt: "Shadow Play · Chambers", collection: "shadow", collectionLabel: "Shadow Play", title: "Shadow Play · Chambers.", edition: "Open edition", sizes: ["8×10", "11×14", "16×20"], price: "$95" },
+  { id: "P-003", image: "/images/work/steam-city/steam-city-4.jpg", alt: "Steam, 5th & 28th", collection: "steam", collectionLabel: "Steam City", title: "Steam, 5th & 28th.", edition: "Open edition", sizes: ["11×14", "16×20", "24×36"], price: "$110" },
+  { id: "P-004", image: "/images/work/through-the-glass/through-the-glass-6.jpg", alt: "Subway, 8:47 AM", collection: "glass", collectionLabel: "Through the Glass", title: "Subway, 8:47 AM.", edition: "Open edition", sizes: ["8×10", "11×14", "16×20"], price: "$95" },
+  { id: "P-005", image: "/images/work/after-dark/after-dark-4.jpg", alt: "Chevy, Mount Sinai", collection: "afterdark", collectionLabel: "After Dark", title: "Chevy, Mount Sinai.", edition: "Limited / 25", sizes: ["11×14", "16×20"], price: "$165" },
+  { id: "P-006", image: "/images/work/reflections/reflections-4.jpg", alt: "Reflections · 14th St.", collection: "reflections", collectionLabel: "Reflections", title: "Reflections · 14th St.", edition: "Limited / 25", sizes: ["11×14", "16×20"], price: "$165" },
+  { id: "P-007", image: "/images/work/after-dark/after-dark-7.jpg", alt: "Doyers St., after dark", collection: "afterdark", collectionLabel: "After Dark", title: "Doyers St., after dark.", edition: "Limited / 25", sizes: ["11×14", "16×20", "24×36"], price: "$165" },
+  { id: "P-008", image: "/images/work/white-out/white-out-4.jpg", alt: "White Out, January", collection: "whiteout", collectionLabel: "White Out", title: "White Out, January.", edition: "Seasonal / 30", sizes: ["8×10", "11×14", "16×20"], price: "$125" },
   { id: "P-009", image: "/images/photos/red.jpg", alt: "Red, July", collection: "red", collectionLabel: "Red", title: "Red, July.", edition: "Limited / 15", sizes: ["11×14", "16×20"], price: "$195" },
 ];
 
