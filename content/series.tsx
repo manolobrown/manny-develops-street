@@ -64,7 +64,7 @@ export const SERIES: Series[] = [
     alt: "After Dark",
     frames: "Scoping",
     edit: "—",
-    status: <em>Scoping</em>,
+    status: <em>Active</em>,
     started: "—",
     galleryFrames: [
       { src: "/images/work/after-dark/after-dark.jpg", alt: "After Dark" },
@@ -91,7 +91,7 @@ export const SERIES: Series[] = [
     alt: "Steam City",
     frames: "Scoping",
     edit: "—",
-    status: <em>Scoping</em>,
+    status: <em>Seasonal</em>,
     started: "—",
     galleryFrames: [
       { src: "/images/work/steam-city/steam-city.jpg", alt: "Steam City" },
@@ -118,7 +118,7 @@ export const SERIES: Series[] = [
     alt: "Shadow Play",
     frames: "Scoping",
     edit: "—",
-    status: <em>Scoping</em>,
+    status: <em>Active</em>,
     started: "—",
     galleryFrames: [
       { src: "/images/work/shadow-play/shadow-play.jpg", alt: "Shadow Play" },
@@ -145,7 +145,7 @@ export const SERIES: Series[] = [
     alt: "Reflections",
     frames: "Scoping",
     edit: "—",
-    status: <em>Scoping</em>,
+    status: <em>Weather-gated</em>,
     started: "—",
     galleryFrames: [
       { src: "/images/work/reflections/reflections.jpg", alt: "Reflections" },
@@ -171,7 +171,7 @@ export const SERIES: Series[] = [
     alt: "White Out",
     frames: "Scoping",
     edit: "—",
-    status: <em>Scoping</em>,
+    status: <em>Multi-year</em>,
     started: "—",
     galleryFrames: [
       { src: "/images/work/white-out/white-out.jpg", alt: "White Out" },
