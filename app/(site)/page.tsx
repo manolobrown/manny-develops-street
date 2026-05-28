@@ -7,7 +7,7 @@ import { NewsletterForm } from "@/components/forms/NewsletterForm";
 const PATHS = [
   {
     href: "/work",
-    img: "/images/photos/window.jpg",
+    img: "/images/work/through-the-glass/through-the-glass-2.jpg",
     alt: "Through the Glass series",
     eyebrow: "A · 01",
     role: "Personal practice",
@@ -42,7 +42,7 @@ const PATHS = [
 ];
 
 const PREVIEW = [
-  { img: "/images/photos/window.jpg", num: "01", cat: "Subway · Daily", title: <>Through the <em>Glass</em></> },
+  { img: "/images/work/through-the-glass/through-the-glass-3.jpg", num: "01", cat: "Subway · Daily", title: <>Through the <em>Glass</em></> },
   { img: "/images/photos/shadow.jpg", num: "02", cat: "NYC at Night · Hard light", title: <>Shadow <em>Play</em></> },
   { img: "/images/photos/reflection.jpg", num: "03", cat: "Astor Place. · After rain", title: <em>Reflections</em> },
 ];
@@ -77,8 +77,8 @@ export default function HomePage() {
         {/* Hero image */}
         <figure className="relative my-8 aspect-[16/9] max-h-[78vh] overflow-hidden bg-bg-2">
           <Image
-            src="/images/photos/night-4.jpg"
-            alt="Chevy on Mount Sinai, after dark — from the After Dark series"
+            src="/images/work/through-the-glass/through-the-glass-7.jpg"
+            alt="From the Through the Glass series"
             fill
             priority
             sizes="100vw"
@@ -95,9 +95,9 @@ export default function HomePage() {
             "
           >
             <span className="font-serif text-[16px] italic tracking-[-0.005em] normal-case opacity-90 [text-transform:none]">
-              <em className="not-italic [font-style:italic] text-white">Chevy, Mount Sinai</em> · After Dark, № 14
+              From <em className="not-italic [font-style:italic] text-white">Through the Glass</em>
             </span>
-            <span>Frame 014 / 086 · Nov 2023</span>
+            <span>Vol. 01 · in progress</span>
           </figcaption>
         </figure>
 
@@ -236,7 +236,7 @@ export default function HomePage() {
           <div className="sticky top-[100px]">
             <div className="relative aspect-zine overflow-hidden shadow-[0_30px_80px_-20px_rgba(24,20,15,0.25),0_8px_20px_-8px_rgba(24,20,15,0.15)] -rotate-[0.6deg]">
               <Image
-                src="/images/photos/window-2.jpg"
+                src="/images/work/through-the-glass/through-the-glass.jpg"
                 alt="Through the Glass — zine cover"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
