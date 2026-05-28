@@ -43,8 +43,8 @@ const PATHS = [
 
 const PREVIEW = [
   { img: "/images/work/through-the-glass/through-the-glass-3.jpg", num: "01", cat: "Subway · Daily", title: <>Through the <em>Glass</em></> },
-  { img: "/images/photos/shadow.jpg", num: "02", cat: "NYC at Night · Hard light", title: <>Shadow <em>Play</em></> },
-  { img: "/images/photos/reflection.jpg", num: "03", cat: "Astor Place. · After rain", title: <em>Reflections</em> },
+  { img: "/images/work/shadow-play/shadow-play-3.jpg", num: "02", cat: "NYC at Night · Hard light", title: <>Shadow <em>Play</em></> },
+  { img: "/images/work/reflections/reflections-3.jpg", num: "03", cat: "Astor Place. · After rain", title: <em>Reflections</em> },
 ];
 
 export default function HomePage() {
