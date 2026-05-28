@@ -19,7 +19,7 @@ export const PRINTS: Print[] = [
   { id: "P-006", image: "/images/work/reflections/reflections-4.jpg", alt: "Reflections · 14th St.", collection: "reflections", collectionLabel: "Reflections", title: "Reflections · 14th St.", edition: "Limited / 25", sizes: ["11×14", "16×20"], price: "$165" },
   { id: "P-007", image: "/images/work/after-dark/after-dark-7.jpg", alt: "Doyers St., after dark", collection: "afterdark", collectionLabel: "After Dark", title: "Doyers St., after dark.", edition: "Limited / 25", sizes: ["11×14", "16×20", "24×36"], price: "$165" },
   { id: "P-008", image: "/images/work/white-out/white-out-4.jpg", alt: "White Out, January", collection: "whiteout", collectionLabel: "White Out", title: "White Out, January.", edition: "Seasonal / 30", sizes: ["8×10", "11×14", "16×20"], price: "$125" },
-  { id: "P-009", image: "/images/photos/red.jpg", alt: "Red, July", collection: "red", collectionLabel: "Red", title: "Red, July.", edition: "Limited / 15", sizes: ["11×14", "16×20"], price: "$195" },
+  { id: "P-009", image: "/images/work/after-dark/after-dark-9.jpg", alt: "After Dark · 3 AM", collection: "afterdark", collectionLabel: "After Dark", title: "After Dark · 3 AM.", edition: "Limited / 15", sizes: ["11×14", "16×20"], price: "$195" },
 ];
 
 export const PRINT_FILTERS = [
@@ -29,7 +29,6 @@ export const PRINT_FILTERS = [
   { key: "shadow", label: "Shadow Play" },
   { key: "steam", label: "Steam City" },
   { key: "reflections", label: "Reflections" },
-  { key: "red", label: "Red" },
   { key: "whiteout", label: "White Out" },
 ] as const;
 
