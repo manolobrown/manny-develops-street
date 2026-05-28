@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { ClosingCta } from "@/components/ui/ClosingCta";
+import { GalleryLightbox } from "@/components/work/GalleryLightbox";
 import { SERIES, findSeries } from "@/content/series";
 
 export function generateStaticParams() {
@@ -119,27 +120,8 @@ export default async function SeriesPage(props: PageProps<"/work/[slug]">) {
       {/* Conditional frames gallery — populated by CMS later */}
       {series.galleryFrames && series.galleryFrames.length > 0 && (
         <section className="px-pad pb-pad-y">
-          <SectionHead num="02.A" label="Frames" date={`${series.galleryFrames.length} of ${series.frames}`} />
-          <div className="grid gap-6 pt-7 md:grid-cols-2 lg:grid-cols-3">
-            {series.galleryFrames.map((frame, i) => (
-              <figure key={i} className="m-0 flex flex-col gap-2">
-                <div className="relative aspect-[4/5] w-full overflow-hidden bg-bg-2">
-                  <Image
-                    src={frame.src}
-                    alt={frame.alt}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                {frame.caption && (
-                  <figcaption className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">
-                    {frame.caption}
-                  </figcaption>
-                )}
-              </figure>
-            ))}
-          </div>
+          <SectionHead num="02.A" label="Frames" date={`A selection · ${series.galleryFrames.length}`} />
+          <GalleryLightbox frames={series.galleryFrames} />
         </section>
       )}
 
