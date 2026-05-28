@@ -125,15 +125,3 @@ export const FAQS: Faq[] = [
     a: "Most often: your office (if there's good window light), the West Side piers, Tribeca rooftops, Chinatown side streets, the Brooklyn Bridge approach. We pick during the sales call.",
   },
 ];
-
-export const PORTRAITS_SAMPLES = [
-  "/images/photos/wedding-5.jpg",
-  "/images/photos/wedding-9.jpg",
-  "/images/photos/wedding-11.jpg",
-  "/images/photos/wedding-7.jpg",
-  "/images/photos/wedding-4.jpg",
-  "/images/photos/wedding-13.jpg",
-  "/images/photos/wedding-8.jpg",
-  "/images/photos/wedding-15.jpg",
-  "/images/photos/wedding-12.jpg",
-];
