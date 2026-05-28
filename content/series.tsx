@@ -34,28 +34,20 @@ export const SERIES: Series[] = [
       "Two years of subway windows. The reflections, the framing, the lives passing through. The series that opens the brand — and the first zine, going to press in June 2026.",
     longDescription:
       "Started as a commute habit and turned into a discipline: one frame for every weekday ride, same camera, no editing on the train. The 38-photograph edit going into Vol. 01 was pulled from roughly 250 keepers across 14 months.",
-    image: "/images/photos/window.jpg",
+    image: "/images/work/through-the-glass/through-the-glass-7.jpg",
     alt: "Through the Glass",
     frames: "Scoping",
     edit: "Pulling for Vol. 01",
     status: <em>Shooting</em>,
     started: "—",
     galleryFrames: [
-      {
-        src: "/images/photos/window-2.jpg",
-        alt: "Subway window, evening commute",
-        caption: "Frame 04 / 38 · Q Train northbound · Mar 2024",
-      },
-      {
-        src: "/images/photos/subway.jpg",
-        alt: "Subway car interior, 8:47 AM",
-        caption: "Frame 19 / 38 · 4 Train, 14th St. · Aug 2024",
-      },
-      {
-        src: "/images/photos/reflection.jpg",
-        alt: "Reflection through subway window",
-        caption: "Frame 27 / 38 · L Train, 3rd Ave. · Nov 2024",
-      },
+      { src: "/images/work/through-the-glass/through-the-glass.jpg", alt: "Through the Glass" },
+      { src: "/images/work/through-the-glass/through-the-glass-2.jpg", alt: "Through the Glass" },
+      { src: "/images/work/through-the-glass/through-the-glass-3.jpg", alt: "Through the Glass" },
+      { src: "/images/work/through-the-glass/through-the-glass-4.jpg", alt: "Through the Glass" },
+      { src: "/images/work/through-the-glass/through-the-glass-5.jpg", alt: "Through the Glass" },
+      { src: "/images/work/through-the-glass/through-the-glass-6.jpg", alt: "Through the Glass" },
+      { src: "/images/work/through-the-glass/through-the-glass-8.jpg", alt: "Through the Glass" },
     ],
   },
   {
