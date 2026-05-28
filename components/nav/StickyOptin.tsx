@@ -72,7 +72,7 @@ export function StickyOptin() {
           </span>
           <form
             onSubmit={onSubmit}
-            className="flex items-center gap-1 rounded-full bg-white/10 py-1 pl-3.5 pr-1"
+            className="flex items-center gap-1 rounded-full bg-bg/10 py-1 pl-3.5 pr-1"
           >
             <input
               type="email"
@@ -82,7 +82,7 @@ export function StickyOptin() {
               onChange={(e) => setEmail(e.target.value)}
               className="
                 w-[180px] border-none bg-transparent text-[13px] text-bg outline-none
-                font-sans placeholder:text-white/50
+                font-sans placeholder:text-bg/50
               "
             />
             <button
@@ -101,8 +101,8 @@ export function StickyOptin() {
             aria-label="Dismiss"
             className="
               flex h-7 w-7 items-center justify-center rounded-full
-              border border-white/20 bg-transparent text-bg text-[12px]
-              transition-[border-color] duration-[260ms] ease-editorial hover:border-white/40
+              border border-bg/20 bg-transparent text-bg text-[12px]
+              transition-[border-color] duration-[260ms] ease-editorial hover:border-bg/40
             "
           >
             ✕
