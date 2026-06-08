@@ -8,13 +8,13 @@ export function LetterCard({ post }: { post: LetterPost }) {
       href={`/journal/${post.slug}`}
       className="group block border-b border-line-hair pb-14 last:border-0 last:pb-0"
     >
-      <article className="grid items-start gap-8 md:grid-cols-[1fr_1.4fr]">
-        <div className="relative aspect-[4/5] w-full overflow-hidden bg-bg-2">
+      <article className="grid items-center gap-10 md:grid-cols-2">
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-bg-2">
           <Image
             src={post.hero.src}
             alt={post.hero.alt}
             fill
-            sizes="(min-width: 768px) 40vw, 100vw"
+            sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover transition-transform duration-[700ms] ease-editorial group-hover:scale-[1.02]"
           />
         </div>
