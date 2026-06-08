@@ -3,6 +3,7 @@ export type NavItem = { label: string; href: string };
 export const NAV_LINKS: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Work", href: "/work" },
+  { label: "Journal", href: "/journal" },
   { label: "Portraits", href: "/portraits" },
   { label: "Workshops", href: "/workshops" },
   { label: "Shop", href: "/shop" },
@@ -13,9 +14,10 @@ export const NAV_LINKS: NavItem[] = [
 export const SECTION_NUMBERS: Record<string, string> = {
   "/": "01",
   "/work": "02",
-  "/portraits": "03",
-  "/workshops": "04",
-  "/shop": "05",
-  "/about": "06",
-  "/contact": "07",
+  "/journal": "03",
+  "/portraits": "04",
+  "/workshops": "05",
+  "/shop": "06",
+  "/about": "07",
+  "/contact": "08",
 };

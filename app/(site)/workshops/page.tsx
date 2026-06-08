@@ -12,7 +12,7 @@ export default function WorkshopsPage() {
         <div className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-line pb-7 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-2">
           <div>
             <span className="font-serif text-[32px] font-light italic tracking-[-0.02em] leading-none text-ink normal-case [text-transform:none]">
-              § 04
+              § 05
             </span>
           </div>
           <div className="text-center">Saturday walks · Year-round · NYC</div>

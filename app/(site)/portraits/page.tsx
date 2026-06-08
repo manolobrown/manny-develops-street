@@ -9,7 +9,7 @@ export default function PortraitsPage() {
   return (
     <>
       <PageHeader
-        num="03"
+        num="04"
         mastCenter="Personal-branding portraits · NYC"
         mastRight={<span>Booking opens late 2026</span>}
         title={<>The portrait that doesn&apos;t look like a <em>headshot</em>.</>}

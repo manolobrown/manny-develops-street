@@ -8,7 +8,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader
-        num="07"
+        num="08"
         mastCenter="Inquiries · Sales calls · Editorial"
         mastRight={<span>Reply in 2 business days</span>}
         title={<>Let&apos;s <em>walk</em> first.</>}

@@ -13,7 +13,7 @@ export default function ShopPage() {
   return (
     <>
       <PageHeader
-        num="05"
+        num="06"
         mastCenter="Shop · Prints & Presets"
         mastRight={
           <>
