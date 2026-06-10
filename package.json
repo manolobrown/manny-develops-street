@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "smoke:forms": "node scripts/smoke-forms.mjs",
+    "smoke:forms:live": "node scripts/smoke-forms.mjs --live"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
