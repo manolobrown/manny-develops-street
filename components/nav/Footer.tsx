@@ -4,27 +4,27 @@ type Column = { heading: string; items: Array<{ label: string; href?: string }> 
 
 const COLUMNS: Column[] = [
   {
-    heading: "Practice",
+    heading: "The work",
     items: [
-      { label: "Personal work", href: "/work" },
+      { label: "Six series", href: "/work" },
+      { label: "Journal", href: "/journal" },
       { label: "Zine & letter", href: "/#newsletter" },
-      { label: "Workshops", href: "/workshops" },
     ],
   },
   {
-    heading: "Studio",
+    heading: "Shop",
     items: [
-      { label: "Portraits", href: "/portraits" },
-      { label: "Book a session", href: "/contact" },
+      { label: "Prints", href: "/shop" },
+      { label: "Presets", href: "/shop" },
       { label: "Press & credits", href: "/about" },
     ],
   },
   {
     heading: "Connect",
     items: [
-      { label: "Instagram", href: "https://instagram.com" },
+      { label: "Instagram", href: "https://instagram.com/manolobrown" },
       { label: "Sunday letter", href: "/#newsletter" },
-      { label: "LinkedIn", href: "https://linkedin.com" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
@@ -32,7 +32,6 @@ const COLUMNS: Column[] = [
     items: [
       { label: "New York, NY" },
       { label: "hi@mannydevelops.com" },
-      { label: "Tue – Sat" },
     ],
   },
 ];
@@ -48,7 +47,7 @@ export function Footer() {
           Manuel Peña
           <br />
           <em className="text-[14px] font-light text-ink-2 not-italic [font-style:italic]">
-            Photographer · NYC
+            Street photographer · NYC
           </em>
         </div>
       </div>
@@ -83,8 +82,8 @@ export function Footer() {
 
       <div className="flex flex-wrap items-center justify-between gap-3 pt-5 font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">
         <span>© {new Date().getFullYear()} Manuel Peña</span>
-        <span>One eye. Two practices. One brand.</span>
-        <span>v1.0 · Hybrid edition</span>
+        <span>Street photography. New York City.</span>
+        <span>v2.0 · Street edition</span>
       </div>
     </footer>
   );

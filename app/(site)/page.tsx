@@ -10,35 +10,34 @@ const PATHS = [
     img: "/images/work/through-the-glass/through-the-glass-2.jpg",
     alt: "Through the Glass series",
     eyebrow: "A · 01",
-    role: "Personal practice",
+    role: "The archive",
     title: <em>Work</em>,
-    body: "Six ongoing series. A zine a year. The street & documentary archive, and the editorial credits that come with it.",
+    body: "Six ongoing series, each with its own rules — a train line, a season, an hour of night. A zine a year pulled from the strongest of it.",
     meta: "6 series · 580+ frames",
     cta: "View the work",
   },
   {
-    href: "/portraits",
-    img: "/images/photos/wedding-3.jpg",
-    alt: "Personal-branding portrait sample",
+    href: "/shop",
+    img: "/images/work/steam-city/steam-city-2.jpg",
+    alt: "Steam City print",
     eyebrow: "B · 02",
-    role: "Studio offering",
-    title: <em>Portraits</em>,
-    body: "Personal-branding portraits for founders, partners, authors, creatives. Three tiers, on location in the city. Booking now through August.",
-    meta: "From $1,495",
-    cta: "See the tiers",
+    role: "Take it home",
+    title: <>Prints &amp; <em>Presets</em></>,
+    body: "Small-edition prints from the series, and the Lightroom presets I actually edit with — the free three-preset sampler is the way in.",
+    meta: "Free sampler · prints & full pack",
+    cta: "Visit the shop",
   },
-  // {
-  //   href: "/workshops",
-  //   img: "/images/photos/steam.jpg",
-  //   alt: "Saturday workshop walk",
-  //   eyebrow: "C · 03",
-  //   role: "Saturdays",
-  //   title: <em>Workshops</em>,
-  //   body: "Three-hour neighborhood photo walks. Five to eight cameras, one opinionated edit, coffee at the end. $200/seat.",
-  //   meta: "Next: May 23 · 6 / 8 seats",
-  //   cta: "Reserve a seat",
-  //   status: "Disabled"
-  // },
+  {
+    href: "/journal",
+    img: "/images/work/shadow-play/shadow-play-8.jpg",
+    alt: "Shadow Play frame",
+    eyebrow: "C · 03",
+    role: "Field notes",
+    title: <em>Journal</em>,
+    body: "Stories from the street, the discipline behind each series, and the occasional honest piece of gear writing.",
+    meta: "New posts monthly",
+    cta: "Read the journal",
+  },
 ];
 
 const PREVIEW = [
@@ -104,11 +103,11 @@ export default function HomePage() {
         {/* Position statement */}
         <div className="grid items-end gap-16 border-b border-line py-10 pb-14 md:grid-cols-[1.6fr_1fr]">
           <h1 className="m-0 text-balance font-serif font-extralight text-[clamp(40px,5.8vw,92px)] leading-none tracking-[-0.03em]">
-            I'm a New York <em>street &amp; documentary</em> photographer who makes portraits that don't feel like corporate portraits.
+            Street photographer. Storyteller of the <em>everyday</em>.
           </h1>
           <div className="flex flex-col gap-[18px]">
             <p className="m-0 max-w-[38ch] font-serif font-light text-[17px] leading-[1.5] text-ink-2">
-              One eye, two practices. The street work is what makes me interesting. The portrait work is what funds the next year of street work. Each one is the marketing engine for the other.
+              There's a story hidden in every corner of this city — I've spent a decade chasing it with a camera. The work lives here: the series, the zine, the prints, the presets.
             </p>
             <div className="mt-1.5 flex flex-col gap-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
               <span>Working since 2016</span>
@@ -121,7 +120,7 @@ export default function HomePage() {
         {/* Three paths */}
         <nav
           aria-label="Choose a path"
-          className="grid gap-7 border-b border-line py-16 pb-20 md:grid-cols-2"
+          className="grid gap-7 border-b border-line py-16 pb-20 md:grid-cols-3"
         >
           {PATHS.map((p) => (
             <Link
@@ -292,7 +291,7 @@ export default function HomePage() {
       <ClosingCta
         eyebrow="§ 05 · Get in touch"
         headline={<>Let's <em>walk</em> first.</>}
-        body="A portrait session, a workshop seat, an editorial pitch, or a coffee to talk about whether any of this is a fit. One form, one inbox, one human reading it."
+        body="A print inquiry, a licensing or editorial pitch, a question about the presets, or a coffee to talk about the street. One form, one inbox, one human reading it."
         actions={[
           { label: "Start an inquiry", href: "/contact", primary: true },
           { label: "hi@mannydevelops.com", href: "mailto:hi@mannydevelops.com" },

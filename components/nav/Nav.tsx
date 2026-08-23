@@ -24,7 +24,7 @@ export function Nav() {
           Manuel Peña
         </span>
         <span className="mt-1 font-mono text-[9.5px] uppercase leading-none tracking-[0.16em] text-ink-3">
-          Street &amp; Portraits · NYC
+          Street Photography · NYC
         </span>
       </Link>
 
@@ -33,14 +33,14 @@ export function Nav() {
       <div className="flex items-center gap-3">
         <ThemeToggle />
         <Link
-          href="/contact"
+          href="/shop"
           className="
-            inline-flex items-center gap-2 rounded-full bg-ink px-[18px] py-3
-            font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-bg
+            inline-flex items-center gap-2 rounded-full bg-accent px-[18px] py-3
+            font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white
             transition-opacity duration-[260ms] ease-editorial hover:opacity-[0.88]
           "
         >
-          Book a session<span aria-hidden>↗</span>
+          Prints &amp; presets<span aria-hidden>↗</span>
         </Link>
       </div>
     </header>

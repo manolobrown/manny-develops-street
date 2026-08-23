@@ -4,25 +4,27 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ─────────────────────────────────────────────────────────────────────────
-   Design tokens — ported verbatim from design_handoff_photography_portfolio/
-   hybrid.css. The --hp-* vars are the single source of truth and flip on
-   dark mode. Tailwind utilities are exposed through @theme inline so they
-   resolve to the current theme at runtime.
+   Design tokens — Gallery Dark (feature/gallery-dark-redesign).
+   Dark is the default; [data-theme="light"] is the warm-paper alternate.
+   The --hp-* vars are the single source of truth. Tailwind utilities are
+   exposed through @theme inline so they resolve to the current theme at
+   runtime. Palette matches the brand: #111 canvas, warm off-white ink,
+   street-red #C0392B accent.
    ──────────────────────────────────────────────────────────────────────── */
 
 :root {
-  --hp-bg:        #f5f2ec;
-  --hp-bg-2:      #ebe6dc;
-  --hp-fg:        #18140f;
-  --hp-fg-2:      #4a443c;
-  --hp-fg-3:      #8a8378;
-  --hp-line:      #18140f;
-  --hp-line-soft: rgba(24, 20, 15, 0.16);
-  --hp-line-hair: rgba(24, 20, 15, 0.10);
-  --hp-accent:    #c84e1e;
-  --hp-paper:     #fdfbf6;
-  --hp-dark:      #14110d;
-  --hp-dark-fg:   #f0ece3;
+  --hp-bg:        #111111;
+  --hp-bg-2:      #181818;
+  --hp-fg:        #f4f1ec;
+  --hp-fg-2:      #b8b2a8;
+  --hp-fg-3:      #6f695f;
+  --hp-line:      #f4f1ec;
+  --hp-line-soft: rgba(244, 241, 236, 0.16);
+  --hp-line-hair: rgba(244, 241, 236, 0.08);
+  --hp-accent:    #c0392b;
+  --hp-paper:     #181818;
+  --hp-dark:      #f4f1ec;
+  --hp-dark-fg:   #111111;
 
   --hp-pad:       clamp(20px, 4vw, 56px);
   --hp-pad-y:     clamp(80px, 9vw, 140px);
@@ -30,18 +32,18 @@
   --hp-t:         260ms cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 
-[data-theme="dark"] {
-  --hp-bg:        #0e0c09;
-  --hp-bg-2:      #181410;
-  --hp-fg:        #f0ece3;
-  --hp-fg-2:      #b8b0a3;
-  --hp-fg-3:      #6f685c;
-  --hp-line:      #f0ece3;
-  --hp-line-soft: rgba(240, 236, 227, 0.16);
-  --hp-line-hair: rgba(240, 236, 227, 0.08);
-  --hp-paper:     #14110d;
-  --hp-dark:      #f5f2ec;
-  --hp-dark-fg:   #18140f;
+[data-theme="light"] {
+  --hp-bg:        #f4f1ec;
+  --hp-bg-2:      #e5e0d8;
+  --hp-fg:        #18140f;
+  --hp-fg-2:      #4a443c;
+  --hp-fg-3:      #8a8378;
+  --hp-line:      #18140f;
+  --hp-line-soft: rgba(24, 20, 15, 0.16);
+  --hp-line-hair: rgba(24, 20, 15, 0.10);
+  --hp-paper:     #fdfbf6;
+  --hp-dark:      #111111;
+  --hp-dark-fg:   #f4f1ec;
 }
 
 @theme inline {
@@ -58,9 +60,9 @@
   --color-dark:      var(--hp-dark);
   --color-dark-fg:   var(--hp-dark-fg);
 
-  --font-serif: var(--font-newsreader), "Times New Roman", Georgia, serif;
-  --font-sans:  var(--font-manrope), system-ui, sans-serif;
-  --font-mono:  var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans:  var(--font-archivo), Helvetica, system-ui, sans-serif;
+  --font-mono:  var(--font-archivo), Helvetica, system-ui, sans-serif;
 
   --spacing-pad:   var(--hp-pad);
   --spacing-pad-y: var(--hp-pad-y);
