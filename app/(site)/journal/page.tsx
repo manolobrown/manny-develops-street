@@ -12,8 +12,8 @@ export default function JournalPage() {
   return (
     <>
       <PageHeader
-        num="03"
-        mastCenter="Letters · Essays · Notes"
+        label="Journal"
+        mastCenter="Letters · Essays"
         mastRight={
           <>
             <span>Sunday letter</span>

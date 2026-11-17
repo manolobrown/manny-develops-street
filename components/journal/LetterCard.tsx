@@ -20,7 +20,7 @@ export function LetterCard({ post }: { post: LetterPost }) {
         </div>
         <div className="flex flex-col gap-3">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
-            <span className="font-semibold text-accent">Letter</span>
+            <span className="font-semibold text-ink">Letter</span>
             <span>·</span>
             <span>Vol 01 · Week {String(post.weekNumber).padStart(2, "0")}</span>
             <span>·</span>

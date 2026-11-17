@@ -132,12 +132,12 @@ export default function HomePage() {
             return (
               <li key={s.slug}>
                 <Link href={`/work/${s.slug}`} className="group flex flex-col gap-3">
-                  <span className="flex aspect-square items-end justify-start bg-bg-2/40">
+                  <span className="relative block aspect-square">
                     <Photo
                       photo={cover}
                       alt=""
                       sizes="(min-width: 1024px) 16vw, (min-width: 768px) 33vw, 50vw"
-                      className="max-h-full w-auto max-w-full transition-opacity duration-[260ms] group-hover:opacity-85"
+                      className="absolute bottom-0 left-0 max-h-full w-auto max-w-full transition-opacity duration-[260ms] group-hover:opacity-85"
                     />
                   </span>
                   <span className="flex flex-col gap-1">

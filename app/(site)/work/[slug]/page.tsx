@@ -73,9 +73,9 @@ export default async function SeriesPage(props: PageProps<"/work/[slug]">) {
         <div className="flex items-center justify-between border-b border-line-soft pb-3 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3">
           <span>
             <span className="text-ink">N°{series.number}</span>
-            <span className="mx-2">/</span>
+            <span className="mx-2">·</span>
             {series.code}
-            <span className="mx-2">/</span>
+            <span className="mx-2">·</span>
             {series.category}
           </span>
           <Link href="/work" className="hover:text-ink">
@@ -95,7 +95,7 @@ export default async function SeriesPage(props: PageProps<"/work/[slug]">) {
               {facts.map(({ t, d }) => (
                 <div key={t} className="flex flex-col gap-0.5">
                   <dt className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">{t}</dt>
-                  <dd className="m-0 text-[15px] text-ink">{d}</dd>
+                  <dd className="m-0 font-mono text-[11px] uppercase tracking-[0.08em] text-ink">{d}</dd>
                 </div>
               ))}
             </dl>

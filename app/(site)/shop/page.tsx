@@ -18,11 +18,11 @@ export default function ShopPage() {
   return (
     <>
       <PageHeader
-        num="06"
-        mastCenter="Shop · Prints & Presets"
+        label="Shop"
+        mastCenter="Prints · Presets"
         mastRight={
           <>
-            <span>Ships from NYC</span><span>·</span><span>7 — 10 days worldwide</span>
+            <span>Ships from NYC</span><span>·</span><span>7–10 days worldwide</span>
           </>
         }
         title={<>Take a <em>piece</em> of the city home.</>}
@@ -48,14 +48,14 @@ export default function ShopPage() {
         {/* Provenance story + 2x2 stats */}
         <div className="grid items-center gap-12 pt-10 md:grid-cols-[1.2fr_1fr]">
           <p className="m-0 max-w-[58ch] font-sans font-light text-[clamp(20px,2.2vw,28px)] leading-[1.35] tracking-[-0.012em]">
-            These aren&apos;t recipes borrowed from Pinterest. They were <em>reverse-engineered from my actual Lightroom catalog</em> — median values pulled from how I edit each kind of shot, on the streets I actually walk. Real, mine, and tuned for NYC.
+            These aren&apos;t recipes borrowed from Pinterest. They were reverse-engineered from my actual Lightroom catalog — median values pulled from how I edit each kind of shot, on the streets I actually walk. Real, mine, and tuned for NYC.
           </p>
           <div className="grid grid-cols-2 gap-px border border-line-hair bg-line-hair">
             {[
               { num: "280,515", lbl: "Photos in catalog" },
-              { num: <em>1,159</em>, lbl: "Five-star selections" },
+              { num: "1,159", lbl: "Five-star selections" },
               { num: "10", lbl: "Looks distilled" },
-              { num: <em>0</em>, lbl: "Borrowed from anyone else" },
+              { num: "0", lbl: "Borrowed from anyone else" },
             ].map((s, i) => (
               <div key={i} className="flex flex-col gap-1 bg-paper p-6">
                 <div className="font-sans font-light text-[clamp(28px,3.4vw,48px)] leading-none tracking-[-0.02em]">
@@ -75,10 +75,10 @@ export default function ShopPage() {
           <article className="flex flex-col gap-5 border border-line-soft bg-bg p-9">
             <div className="flex items-center justify-between border-b border-line-hair pb-3">
               <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3">3 presets</span>
-              <span className="font-sans italic text-[24px] tracking-[-0.01em] text-ink">Free</span>
+              <span className="font-sans text-[28px] font-light tracking-[-0.02em] text-ink">Free</span>
             </div>
             <h3 className="m-0 font-sans font-extralight text-[40px] leading-none tracking-[-0.025em]">
-              <em>Free Sampler</em>
+              Free Sampler
             </h3>
             <p className="m-0 font-sans font-light text-[16.5px] leading-[1.55] text-ink-2">
               Three of the recipes I reach for most. On the house — no email gate, no follow-up sequence.
@@ -100,7 +100,7 @@ export default function ShopPage() {
               <span className="font-sans text-[28px] font-light tracking-[-0.02em] text-dark-fg">$38</span>
             </div>
             <h3 className="m-0 font-sans font-extralight text-[40px] leading-none tracking-[-0.025em]">
-              <em className="text-accent">Full Pack</em>
+              Full Pack
             </h3>
             <p className="m-0 font-sans font-light text-[16.5px] leading-[1.55] text-dark-fg/80">
               The complete set — every recipe extracted from 280,515 photos and 1,159 five-star selections in my catalog.
@@ -164,11 +164,11 @@ export default function ShopPage() {
                   <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-3">
                     {p.number}
                   </span>
-                  <span className="font-sans italic text-[19px] tracking-[-0.01em] text-ink">
+                  <span className="font-sans text-[19px] tracking-[-0.01em] text-ink">
                     {p.name}
                   </span>
                 </div>
-                <div className="font-sans italic text-[13.5px] text-ink-3">{p.source}</div>
+                <div className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">{p.source}</div>
                 <div className="font-sans font-light text-[15px] leading-[1.5] text-ink-2">
                   {p.description}
                 </div>
@@ -190,22 +190,22 @@ export default function ShopPage() {
           {[
             {
               num: "01 · Paper",
-              h: <>Hahnemühle <em>Photo Rag</em></>,
+              h: <>Hahnemühle Photo Rag</>,
               body: "Archival cotton rag, 308 gsm. Museum-grade — the same paper used by major galleries for fine-art editions.",
             },
             {
               num: "02 · Editions",
-              h: <>Signed &amp; <em>numbered</em></>,
+              h: <>Signed &amp; numbered</>,
               body: "Limited editions are signed in pencil and stamped with a numbered certificate of authenticity, hand-packed.",
             },
             {
               num: "03 · Shipping",
-              h: <>Worldwide, <em>7 – 10 days</em></>,
+              h: <>Worldwide, 7–10 days</>,
               body: "Rolled in a heavy-walled tube for sizes 16×20 and up. Free shipping on orders over $200 in the US.",
             },
           ].map((item, i) => (
             <div key={i} className="flex flex-col gap-3">
-              <span className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.08em] text-accent">
+              <span className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.08em] text-ink-3">
                 {item.num}
               </span>
               <h4 className="m-0 font-sans font-light text-[clamp(24px,2.4vw,32px)] leading-[1.05] tracking-[-0.02em]">

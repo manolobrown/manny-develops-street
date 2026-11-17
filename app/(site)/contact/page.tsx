@@ -8,7 +8,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader
-        num="08"
+        label="Contact"
         mastCenter="Prints · Editorial · Hello"
         mastRight={<span>Reply in 2 business days</span>}
         title={<>Let&apos;s <em>walk</em> first.</>}
@@ -27,13 +27,13 @@ export default function ContactPage() {
             <div className="flex flex-col gap-3 pt-2">
               <a
                 href="mailto:hi@mannydevelops.com"
-                className="font-sans text-[18px] italic text-ink underline decoration-line-soft underline-offset-4 hover:text-accent hover:decoration-accent"
+                className="font-sans text-[18px] text-ink underline decoration-line-soft underline-offset-4 hover:text-accent hover:decoration-accent"
               >
                 hi@mannydevelops.com
               </a>
               <a
                 href="mailto:editorial@mannydevelops.com"
-                className="font-sans text-[18px] italic text-ink underline decoration-line-soft underline-offset-4 hover:text-accent hover:decoration-accent"
+                className="font-sans text-[18px] text-ink underline decoration-line-soft underline-offset-4 hover:text-accent hover:decoration-accent"
               >
                 editorial@mannydevelops.com
               </a>
@@ -47,14 +47,6 @@ export default function ContactPage() {
             <p className="m-0 font-sans font-light text-[17px] leading-[1.55] text-ink-2">
               Based in Manhattan, NYC.
             </p>
-            <p className="m-0 font-sans font-light text-[17px] leading-[1.55] text-ink-2">
-              Most sessions are on location — your office, a rooftop, a sidewalk between meetings. Studio rentals available at Lift (Chelsea), Studio M (Brooklyn), or Pier 59.
-            </p>
-            <p className="m-0 pt-3 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3">
-              Tue – Sat · 9 – 6
-              <br />
-              Closed Sunday &amp; Monday
-            </p>
           </div>
 
           <div className="flex flex-col gap-3 border-t border-line-hair pt-10">
@@ -62,7 +54,7 @@ export default function ContactPage() {
               Quick notes
             </h2>
             <p className="m-0 font-sans font-light text-[17px] leading-[1.55] text-ink-2">
-              <strong className="font-medium text-ink">Prints:</strong> name the frame (e.g. TTG·07) and the size you have in mind. <strong className="font-medium text-ink">Editorial:</strong> share the outlet, deadline, and a sentence about the angle. <strong className="font-medium text-ink">Other:</strong> just say what you&apos;ve got and I&apos;ll figure it out.
+              <strong className="font-medium text-ink">Prints:</strong>{" "}name the frame (e.g. TTG·07) and the size you have in mind. <strong className="font-medium text-ink">Editorial:</strong>{" "}share the outlet, deadline, and a sentence about the angle. <strong className="font-medium text-ink">Other:</strong>{" "}just say what you&apos;ve got and I&apos;ll figure it out.
             </p>
           </div>
         </aside>

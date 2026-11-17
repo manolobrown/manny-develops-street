@@ -1,5 +1,5 @@
 type Props = {
-  num: string;
+  label: string;
   mastCenter: string;
   mastRight: React.ReactNode;
   title: React.ReactNode;
@@ -7,11 +7,11 @@ type Props = {
 };
 
 /** Page masthead: a monospace catalogue row, then a large sans title and lede. */
-export function PageHeader({ num, mastCenter, mastRight, title, lede }: Props) {
+export function PageHeader({ label, mastCenter, mastRight, title, lede }: Props) {
   return (
     <section className="border-b border-line-soft px-pad pt-8 pb-16">
       <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 border-b border-line-soft pb-3 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3">
-        <span className="text-ink">N°{num}</span>
+        <span className="text-ink">{label}</span>
         <span className="hidden text-center sm:block">{mastCenter}</span>
         <span className="flex justify-end gap-2">{mastRight}</span>
       </div>

@@ -47,9 +47,7 @@ export function Footer() {
         <div className="font-sans text-[22px] font-normal leading-[1.2]">
           Manuel Peña
           <br />
-          <em className="text-[14px] font-light text-ink-2 not-italic [font-style:italic]">
-            Street photographer · NYC
-          </em>
+          <span className="text-[14px] font-light text-ink-2">Street photography · NYC</span>
         </div>
       </div>
 
@@ -83,7 +81,7 @@ export function Footer() {
 
       <div className="flex flex-wrap items-center justify-between gap-3 pt-5 font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
         <span>© {new Date().getFullYear()} Manuel Peña</span>
-        <span>Street photography. New York City.</span>
+        <span>Street photography · New York City</span>
         <span>v2.0 · Street edition</span>
       </div>
     </footer>

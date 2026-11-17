@@ -41,13 +41,13 @@ export const SERIES: Series[] = [
     number: "01",
     code: "TTG",
     title: "Through the Glass",
-    category: "Ongoing · Daily · Subway",
+    category: "Daily · Subway",
     description:
       "Two years of subway windows. The reflections, the framing, the lives passing through. The series that opens the brand — and the first zine.",
     longDescription:
       "Started as a commute habit and turned into a discipline: one frame for every weekday ride, same camera, no editing on the train. The 38-photograph edit going into Vol. 01 was pulled from roughly 250 keepers across 14 months.",
     cover: "through-the-glass-7.jpg",
-    status: "Shooting",
+    status: "Active",
     edit: "Pulling for Vol. 01",
     frames: [
       { file: "through-the-glass-7.jpg", alt: "A man in a dark coat stands behind the scratched glass doors of an uptown subway entrance at night." },
@@ -65,7 +65,7 @@ export const SERIES: Series[] = [
     number: "02",
     code: "ADK",
     title: "After Dark",
-    category: "Ongoing · Nights · Manhattan",
+    category: "Nights · Manhattan",
     description:
       "Manhattan after 10 PM, weeknights only. Less about neon — more about what's left of a block when the foot traffic clears.",
     longDescription:

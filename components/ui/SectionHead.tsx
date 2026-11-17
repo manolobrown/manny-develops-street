@@ -9,7 +9,7 @@ export function SectionHead({ label, date, className = "" }: Props) {
     <div
       className={`
         grid grid-cols-[auto_1fr_auto] items-center gap-[18px]
-        px-pad pt-7 pb-6
+        pt-7 pb-6
         font-mono text-[11px] uppercase tracking-[0.08em] text-ink-2
         ${className}
       `}

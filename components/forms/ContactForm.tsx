@@ -141,7 +141,7 @@ export function ContactForm() {
       {/* Company + When */}
       <div className="grid gap-6 md:grid-cols-2">
         <Field
-          label={<>04 · Company or outlet <em className="font-sans text-[13px] italic text-ink-3 normal-case">(if applicable)</em></>}
+          label={<>04 · Company or outlet <span className="text-ink-3">(if applicable)</span></>}
           id="company"
           placeholder="Gallery · Magazine · Studio"
         />
@@ -163,7 +163,7 @@ export function ContactForm() {
         />
       </div>
 
-      <p className="m-0 font-sans italic text-[15px] leading-[1.5] text-ink-2">
+      <p className="m-0 font-sans text-[15px] leading-[1.5] text-ink-2">
         You&apos;ll get a personal reply within two business days. If we&apos;ve worked together before, just say so — I&apos;ll find our last thread.
       </p>
 

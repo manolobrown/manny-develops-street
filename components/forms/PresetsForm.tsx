@@ -28,7 +28,7 @@ export function PresetsForm() {
   if (state === "sent") {
     return (
       <div className="mt-auto flex flex-col gap-2 border-t border-line-hair pt-5">
-        <span className="font-sans italic text-[17px] text-ink">
+        <span className="font-sans text-[17px] text-ink">
           ✓ Check your inbox to confirm.
         </span>
         <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">

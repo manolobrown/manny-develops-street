@@ -14,8 +14,8 @@ export default function AboutPage() {
     <>
       <JsonLd data={{ "@context": "https://schema.org", ...PERSON }} />
       <PageHeader
-        num="07"
-        mastCenter="About · Statement · Press"
+        label="About"
+        mastCenter="Statement · Bio"
         mastRight={<span>Working since 2016</span>}
         title="Manuel Peña"
         lede="Brooklyn-born, Manhattan-based. Day job in tech, photographer every other waking hour since 2016."

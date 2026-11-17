@@ -20,7 +20,7 @@ export function EssayCard({ post }: { post: EssayPost }) {
         </div>
         <div className="flex flex-col gap-3">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
-            <span className="font-semibold text-accent">Essay</span>
+            <span className="font-semibold text-ink">Essay</span>
             <span>·</span>
             <span>{formatPostDate(post.date)}</span>
             <span>·</span>
