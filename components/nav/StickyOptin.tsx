@@ -5,6 +5,14 @@ import { usePathname } from "next/navigation";
 
 const STORAGE_KEY = "mp-optin-dismissed";
 
+function wasDismissed() {
+  try {
+    return window.localStorage.getItem(STORAGE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
 export function StickyOptin() {
   const [state, setState] = useState<"hidden" | "shown" | "thanks" | "dismissed">("hidden");
   const [email, setEmail] = useState("");
@@ -12,11 +20,8 @@ export function StickyOptin() {
   const onWorkPage = usePathname().startsWith("/work");
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.localStorage.getItem(STORAGE_KEY) === "1") {
-      setState("dismissed");
-      return;
-    }
+    // Already dismissed: stay "hidden" and never listen for scroll.
+    if (wasDismissed()) return;
     const onScroll = () => {
       if (window.scrollY > 600) setState((s) => (s === "hidden" ? "shown" : s));
     };
@@ -26,7 +31,11 @@ export function StickyOptin() {
   }, []);
 
   const dismiss = () => {
-    window.localStorage.setItem(STORAGE_KEY, "1");
+    try {
+      window.localStorage.setItem(STORAGE_KEY, "1");
+    } catch {
+      // Storage blocked (private mode): it just won't be remembered.
+    }
     setState("dismissed");
   };
 

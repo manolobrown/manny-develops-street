@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
+
+const noopSubscribe = () => () => {};
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  // False during server render and hydration, true after: the theme is only
+  // known on the client, so the icon waits until then.
+  const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false);
 
   const isDark = mounted && resolvedTheme === "dark";
 
