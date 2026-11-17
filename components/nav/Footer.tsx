@@ -24,7 +24,7 @@ const COLUMNS: Column[] = [
     heading: "Connect",
     items: [
       { label: "Instagram", href: INSTAGRAM },
-      { label: "Sunday letter", href: "/#newsletter" },
+      { label: "Newsletter", href: "/#newsletter" },
       { label: "Contact", href: "/contact" },
     ],
   },

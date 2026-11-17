@@ -158,10 +158,10 @@ export default async function JournalPostPage(props: PageProps<"/journal/[slug]"
       <section className="bg-paper px-pad py-pad-y">
         <div className="mx-auto flex max-w-[640px] flex-col items-center gap-6 text-center">
           <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
-            Sunday letter
+            The letter
           </span>
           <h2 className="m-0 font-serif font-extralight text-[clamp(28px,3vw,40px)] leading-[1.1] tracking-[-0.02em]">
-            Get the next one in your <em>inbox</em>.
+            Get the next one in your inbox.
           </h2>
           <div className="w-full max-w-[420px]">
             <NewsletterForm />

@@ -13,16 +13,14 @@ export default function JournalPage() {
     <>
       <PageHeader
         label="Journal"
-        mastCenter="Letters · Essays"
+        mastCenter="Essays · Letters"
         mastRight={
           <>
-            <span>Sunday letter</span>
-            <span>·</span>
-            <span>Monthly essays</span>
+            <span>No fixed schedule</span>
           </>
         }
         title={<em>Journal</em>}
-        lede="The Sunday letter — one photograph, one paragraph, every week — plus occasional longer pieces. Subscribe to get them in your inbox; the archive lives here."
+        lede="Essays on street photography, plus an occasional letter with new work. Subscribe to get them in your inbox; the archive lives here."
       />
 
       <section className="px-pad py-pad-y">
@@ -48,13 +46,13 @@ export default function JournalPage() {
       <section className="border-t border-line-soft bg-paper px-pad py-pad-y">
         <div className="mx-auto flex max-w-[640px] flex-col items-center gap-6 text-center">
           <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
-            Sunday letter
+            The letter
           </span>
           <h2 className="m-0 font-serif font-extralight text-[clamp(28px,3.4vw,44px)] leading-[1.1] tracking-[-0.02em]">
-            One photograph, one paragraph, <em>every Sunday</em>.
+            New work, in your inbox.
           </h2>
           <p className="m-0 max-w-[48ch] font-serif font-light text-[17px] leading-[1.55] text-ink-2">
-            The letter is what shows up first. Essays land here as they&apos;re written.
+            A photograph and a few lines when there&apos;s something worth sending, plus each new essay. No fixed schedule.
           </p>
           <div className="w-full max-w-[420px]">
             <NewsletterForm />

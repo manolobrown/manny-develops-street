@@ -222,7 +222,7 @@ export default function ShopPage() {
       <ClosingCta
         eyebrow="Custom & commission"
         headline={<>Looking for a <em>specific</em> frame?</>}
-        body="The shop is a slice of the catalog. If you've seen a photo in the Work pages or in the Sunday letter and want it as a print, just ask — most frames can be made to order in a size that fits your wall."
+        body="The shop is a slice of the catalog. If you've seen a photo in the Work pages or in the letter and want it as a print, just ask — most frames can be made to order in a size that fits your wall."
         actions={[
           { label: "Request a custom print", href: "/contact?type=print", primary: true },
           { label: "prints@mannydevelops.com", href: "mailto:prints@mannydevelops.com" },

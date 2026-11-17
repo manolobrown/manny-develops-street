@@ -153,16 +153,16 @@ export default function HomePage() {
         </ol>
       </section>
 
-      {/* Sunday letter */}
+      {/* Newsletter */}
       <section id="newsletter" className="border-t border-line-soft px-pad py-pad-y">
         <div className="grid items-end gap-10 md:grid-cols-[1.5fr_1fr]">
           <h2 className="m-0 text-[clamp(36px,5vw,72px)] font-medium leading-[0.95] tracking-[-0.04em]">
-            One photograph, one paragraph, every Sunday.
+            New work, straight to your inbox.
           </h2>
           <div className="flex flex-col gap-4">
             <p className="m-0 max-w-[44ch] text-[16px] leading-[1.55] text-ink-2">
-              The Sunday letter — and first word when Vol. 01 of the zine, <em>Through the Glass</em>, opens for
-              reservations.
+              An occasional letter with new photographs and essays — and first word when Vol. 01 of the zine,{" "}
+              <em>Through the Glass</em>, opens for reservations.
             </p>
             <NewsletterForm />
             <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
