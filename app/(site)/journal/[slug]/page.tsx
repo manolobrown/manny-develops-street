@@ -40,7 +40,7 @@ export default async function JournalPostPage(props: PageProps<"/journal/[slug]"
       <div className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-line-soft px-pad pt-7 pb-4 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-2">
         <span>
           <span className="font-semibold text-ink">
-            § 03 · {isLetter ? "Letter" : "Essay"}
+            {isLetter ? "Letter" : "Essay"}
           </span>
           <span className="ml-3 text-ink-3">
             {isLetter
