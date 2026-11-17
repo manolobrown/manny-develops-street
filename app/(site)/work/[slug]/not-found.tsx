@@ -6,7 +6,7 @@ export default function SeriesNotFound() {
       <div className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-line pb-7 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-2">
         <div>
           <span className="font-sans text-[32px] font-light italic tracking-[-0.02em] leading-none text-ink normal-case [text-transform:none]">
-            § 02 · 404
+            404
           </span>
         </div>
         <div className="text-center">Series not found</div>
