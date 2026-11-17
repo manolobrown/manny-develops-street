@@ -11,20 +11,19 @@ const nextConfig: NextConfig = {
       { source: "/portraits", destination: "/work", permanent: true },
       { source: "/workshops", destination: "/work", permanent: true },
 
-      // Squarespace legacy URLs. These are Squarespace's default collection
-      // paths; replace/extend with the exact list from the old site's
-      // /sitemap.xml before switching DNS.
-      // TODO(manny): map each old Squarespace URL from its sitemap.xml.
+      // Squarespace URLs, mapped from the old site's sitemap.xml
+      // (www.mannydevelops.com). /about and /contact keep their paths.
+      { source: "/home", destination: "/", permanent: true },
       { source: "/blog", destination: "/journal", permanent: true },
-      { source: "/blog/:slug*", destination: "/journal", permanent: true },
-      { source: "/store", destination: "/shop", permanent: true },
-      { source: "/store/:slug*", destination: "/shop", permanent: true },
-      { source: "/portfolio", destination: "/work", permanent: true },
-      { source: "/portfolio/:slug", destination: "/work/:slug", permanent: true },
-      { source: "/galleries", destination: "/work", permanent: true },
-      { source: "/galleries/:slug", destination: "/work/:slug", permanent: true },
-      { source: "/contact-1", destination: "/contact", permanent: true },
-      { source: "/about-1", destination: "/about", permanent: true },
+      // Blog category and tag archives have no equivalent.
+      { source: "/blog/category/:path*", destination: "/journal", permanent: true },
+      { source: "/blog/tag/:path*", destination: "/journal", permanent: true },
+      // The three Squarespace posts, imported into the journal with the same slugs.
+      { source: "/blog/mastering-candid-street-photography", destination: "/journal/mastering-candid-street-photography", permanent: true },
+      { source: "/blog/the-best-street-photography-cameras-2025", destination: "/journal/the-best-street-photography-cameras-2025", permanent: true },
+      { source: "/blog/getting-started-with-street-photography", destination: "/journal/getting-started-with-street-photography", permanent: true },
+      // Anything else under /blog.
+      { source: "/blog/:path*", destination: "/journal", permanent: true },
     ];
   },
 };

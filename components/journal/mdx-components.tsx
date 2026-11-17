@@ -19,6 +19,8 @@ export const mdxComponents: MDXComponents = {
   a: ({ href, children }) => (
     <a
       href={href}
+      // Affiliate links from the imported Squarespace posts.
+      rel={href?.includes("amzn.to") ? "sponsored nofollow noopener" : undefined}
       className="text-ink underline decoration-line-soft underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
     >
       {children}
@@ -38,6 +40,11 @@ export const mdxComponents: MDXComponents = {
     <ol className="my-6 ml-6 list-decimal font-serif font-light text-[17px] leading-[1.65] text-ink-2 marker:text-ink-3">
       {children}
     </ol>
+  ),
+  img: ({ src, alt }) => (
+    // Inline post photos have no known dimensions, so next/image isn't used here.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={typeof src === "string" ? src : undefined} alt={alt ?? ""} loading="lazy" decoding="async" className="my-10 block h-auto w-full" />
   ),
   hr: () => <hr className="my-12 border-0 border-t border-line-hair" />,
   strong: ({ children }) => <strong className="font-semibold text-ink">{children}</strong>,
