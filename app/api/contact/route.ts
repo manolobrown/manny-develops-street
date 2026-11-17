@@ -3,7 +3,7 @@ import { z } from "zod";
 import { resend, CONTACT_TO, CONTACT_FROM, escapeHtml } from "@/lib/email";
 
 const ContactSchema = z.object({
-  intent: z.enum(["portrait", "workshop", "editorial", "other"]).optional(),
+  intent: z.enum(["print", "editorial", "other"]).optional(),
   context: z.string().trim().max(400).optional().or(z.literal("")),
   name: z.string().trim().min(1, "Name is required").max(200),
   email: z.string().trim().email("Valid email required").max(320),

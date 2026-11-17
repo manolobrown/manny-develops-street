@@ -5,9 +5,14 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { ClosingCta } from "@/components/ui/ClosingCta";
 import { PrintsFilter } from "@/components/shop/PrintsFilter";
 import { PresetsForm } from "@/components/forms/PresetsForm";
-import { PRESETS } from "@/content/shop";
+import { PRESETS, PRINTS } from "@/content/shop";
+import { photoBySrc } from "@/lib/photos";
 
-export const metadata = { title: "Shop" };
+export const metadata = {
+  title: "Shop",
+  description: "Archival pigment prints from six New York street photography series, plus Lightroom presets.",
+  alternates: { canonical: "/shop" },
+};
 
 export default function ShopPage() {
   return (
@@ -27,7 +32,13 @@ export default function ShopPage() {
       {/* § 05.A · Prints */}
       <section className="px-pad py-pad-y">
         <SectionHead num="04.A" label="Fine-art prints" date="9 editions · Open + Limited" />
-        <PrintsFilter />
+        <PrintsFilter
+          prints={PRINTS.map((p) => {
+            const photo = photoBySrc(p.image);
+            if (!photo) throw new Error(`Print ${p.id} uses ${p.image}, which isn't in any series`);
+            return { ...p, photo };
+          })}
+        />
       </section>
 
       {/* § 05.B · Presets */}
@@ -36,7 +47,7 @@ export default function ShopPage() {
 
         {/* Provenance story + 2x2 stats */}
         <div className="grid items-center gap-12 pt-10 md:grid-cols-[1.2fr_1fr]">
-          <p className="m-0 max-w-[58ch] font-serif font-light text-[clamp(20px,2.2vw,28px)] leading-[1.35] tracking-[-0.012em]">
+          <p className="m-0 max-w-[58ch] font-sans font-light text-[clamp(20px,2.2vw,28px)] leading-[1.35] tracking-[-0.012em]">
             These aren&apos;t recipes borrowed from Pinterest. They were <em>reverse-engineered from my actual Lightroom catalog</em> — median values pulled from how I edit each kind of shot, on the streets I actually walk. Real, mine, and tuned for NYC.
           </p>
           <div className="grid grid-cols-2 gap-px border border-line-hair bg-line-hair">
@@ -47,10 +58,10 @@ export default function ShopPage() {
               { num: <em>0</em>, lbl: "Borrowed from anyone else" },
             ].map((s, i) => (
               <div key={i} className="flex flex-col gap-1 bg-paper p-6">
-                <div className="font-serif font-light text-[clamp(28px,3.4vw,48px)] leading-none tracking-[-0.02em]">
+                <div className="font-sans font-light text-[clamp(28px,3.4vw,48px)] leading-none tracking-[-0.02em]">
                   {s.num}
                 </div>
-                <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">
+                <div className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
                   {s.lbl}
                 </div>
               </div>
@@ -63,18 +74,18 @@ export default function ShopPage() {
           {/* Free sampler */}
           <article className="flex flex-col gap-5 border border-line-soft bg-bg p-9">
             <div className="flex items-center justify-between border-b border-line-hair pb-3">
-              <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">3 presets</span>
-              <span className="font-serif italic text-[24px] tracking-[-0.01em] text-ink">Free</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3">3 presets</span>
+              <span className="font-sans italic text-[24px] tracking-[-0.01em] text-ink">Free</span>
             </div>
-            <h3 className="m-0 font-serif font-extralight text-[40px] leading-none tracking-[-0.025em]">
+            <h3 className="m-0 font-sans font-extralight text-[40px] leading-none tracking-[-0.025em]">
               <em>Free Sampler</em>
             </h3>
-            <p className="m-0 font-serif font-light text-[16.5px] leading-[1.55] text-ink-2">
+            <p className="m-0 font-sans font-light text-[16.5px] leading-[1.55] text-ink-2">
               Three of the recipes I reach for most. On the house — no email gate, no follow-up sequence.
             </p>
             <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
               {["Street Classic", "Shadow Play", "NYC Golden"].map((p) => (
-                <li key={p} className="font-serif font-light text-[16px] text-ink">
+                <li key={p} className="font-sans font-light text-[16px] text-ink">
                   · {p}
                 </li>
               ))}
@@ -85,13 +96,13 @@ export default function ShopPage() {
           {/* Full pack — featured */}
           <article className="flex flex-col gap-5 bg-dark p-9 text-dark-fg">
             <div className="flex items-center justify-between border-b border-white/15 pb-3">
-              <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-dark-fg/60">10 presets</span>
-              <span className="font-serif text-[28px] font-light tracking-[-0.02em] text-dark-fg">$38</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-dark-fg/60">10 presets</span>
+              <span className="font-sans text-[28px] font-light tracking-[-0.02em] text-dark-fg">$38</span>
             </div>
-            <h3 className="m-0 font-serif font-extralight text-[40px] leading-none tracking-[-0.025em]">
+            <h3 className="m-0 font-sans font-extralight text-[40px] leading-none tracking-[-0.025em]">
               <em className="text-accent">Full Pack</em>
             </h3>
-            <p className="m-0 font-serif font-light text-[16.5px] leading-[1.55] text-dark-fg/80">
+            <p className="m-0 font-sans font-light text-[16.5px] leading-[1.55] text-dark-fg/80">
               The complete set — every recipe extracted from 280,515 photos and 1,159 five-star selections in my catalog.
             </p>
             <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
@@ -102,7 +113,7 @@ export default function ShopPage() {
                 "Install guide PDF",
                 "Free updates",
               ].map((p) => (
-                <li key={p} className="font-serif font-light text-[16px] text-dark-fg/90">
+                <li key={p} className="font-sans font-light text-[16px] text-dark-fg/90">
                   · {p}
                 </li>
               ))}
@@ -110,8 +121,8 @@ export default function ShopPage() {
             <Link
               href="/contact?type=preset-pack"
               className="
-                mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-dark-fg px-5 py-3
-                font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-dark
+                mt-auto inline-flex w-fit items-center gap-2 bg-dark-fg px-5 py-3
+                font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-dark
                 transition-colors duration-[260ms] ease-editorial
                 hover:bg-accent hover:text-white
               "
@@ -122,7 +133,7 @@ export default function ShopPage() {
         </div>
 
         {/* Preset index */}
-        <div className="mt-16 flex items-baseline justify-between border-b border-line py-3 font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">
+        <div className="mt-16 flex items-baseline justify-between border-b border-line py-3 font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
           <span>— Index · 10 presets</span>
           <span>What&apos;s inside the full pack</span>
         </div>
@@ -150,15 +161,15 @@ export default function ShopPage() {
               </div>
               <div className="flex flex-col gap-2">
                 <div className="flex items-baseline gap-3">
-                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-3">
+                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-3">
                     {p.number}
                   </span>
-                  <span className="font-serif italic text-[19px] tracking-[-0.01em] text-ink">
+                  <span className="font-sans italic text-[19px] tracking-[-0.01em] text-ink">
                     {p.name}
                   </span>
                 </div>
-                <div className="font-serif italic text-[13.5px] text-ink-3">{p.source}</div>
-                <div className="font-serif font-light text-[15px] leading-[1.5] text-ink-2">
+                <div className="font-sans italic text-[13.5px] text-ink-3">{p.source}</div>
+                <div className="font-sans font-light text-[15px] leading-[1.5] text-ink-2">
                   {p.description}
                 </div>
               </div>
@@ -166,7 +177,7 @@ export default function ShopPage() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-wrap items-baseline justify-between gap-2 border-t border-line py-3 font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">
+        <div className="mt-10 flex flex-wrap items-baseline justify-between gap-2 border-t border-line py-3 font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
           <span>Works with Lightroom Classic · CC · Mobile</span>
           <span>.xmp + .dng</span>
         </div>
@@ -194,13 +205,13 @@ export default function ShopPage() {
             },
           ].map((item, i) => (
             <div key={i} className="flex flex-col gap-3">
-              <span className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.16em] text-accent">
+              <span className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.08em] text-accent">
                 {item.num}
               </span>
-              <h4 className="m-0 font-serif font-light text-[clamp(24px,2.4vw,32px)] leading-[1.05] tracking-[-0.02em]">
+              <h4 className="m-0 font-sans font-light text-[clamp(24px,2.4vw,32px)] leading-[1.05] tracking-[-0.02em]">
                 {item.h}
               </h4>
-              <p className="m-0 font-serif font-light text-[16.5px] leading-[1.55] text-ink-2">
+              <p className="m-0 font-sans font-light text-[16.5px] leading-[1.55] text-ink-2">
                 {item.body}
               </p>
             </div>

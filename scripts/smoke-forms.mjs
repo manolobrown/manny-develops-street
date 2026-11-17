@@ -76,6 +76,18 @@ await check("rejects invalid email format", async () => {
     throw new Error(`expected fieldErrors.email in issues, got ${JSON.stringify(json)}`);
   }
 });
+await check("rejects retired intents (portrait/workshop)", async () => {
+  const { status, json } = await post("/api/contact", {
+    intent: "portrait",
+    name: "Test",
+    email: "test@example.com",
+    message: "hi",
+  });
+  expectStatus(status, 400);
+  if (!json?.issues?.fieldErrors?.intent) {
+    throw new Error(`expected fieldErrors.intent in issues, got ${JSON.stringify(json)}`);
+  }
+});
 await check("rejects empty message", async () => {
   const { status, json } = await post("/api/contact", {
     name: "Test",

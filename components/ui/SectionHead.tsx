@@ -11,7 +11,7 @@ export function SectionHead({ num, label, date, className = "" }: Props) {
       className={`
         grid grid-cols-[auto_auto_1fr_auto] items-center gap-[18px]
         px-pad pt-7 pb-6
-        font-mono text-[11px] uppercase tracking-[0.18em] text-ink-2
+        font-mono text-[11px] uppercase tracking-[0.08em] text-ink-2
         ${className}
       `}
     >

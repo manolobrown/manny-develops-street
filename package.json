@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "smoke:forms": "node scripts/smoke-forms.mjs",
-    "smoke:forms:live": "node scripts/smoke-forms.mjs --live"
+    "smoke:forms:live": "node scripts/smoke-forms.mjs --live",
+    "photos": "node scripts/build-photos.mjs",
+    "prebuild": "node scripts/build-photos.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -30,6 +32,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

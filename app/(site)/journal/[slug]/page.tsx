@@ -37,7 +37,7 @@ export default async function JournalPostPage(props: PageProps<"/journal/[slug]"
   return (
     <>
       {/* Mast row */}
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-line-soft px-pad pt-7 pb-4 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-2">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-line-soft px-pad pt-7 pb-4 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-2">
         <span>
           <span className="font-semibold text-ink">
             § 03 · {isLetter ? "Letter" : "Essay"}
@@ -110,9 +110,9 @@ export default async function JournalPostPage(props: PageProps<"/journal/[slug]"
           {series && (
             <Link
               href={`/work/${series.slug}`}
-              className="mt-4 inline-flex items-center gap-2 self-start border-t border-line-hair pt-6 font-mono text-[11px] uppercase tracking-[0.16em] text-ink hover:text-accent"
+              className="mt-4 inline-flex items-center gap-2 self-start border-t border-line-hair pt-6 font-mono text-[11px] uppercase tracking-[0.08em] text-ink hover:text-accent"
             >
-              <span>From the {series.titleText} series</span>
+              <span>From the {series.title} series</span>
               <span aria-hidden>↗</span>
             </Link>
           )}
@@ -125,7 +125,7 @@ export default async function JournalPostPage(props: PageProps<"/journal/[slug]"
           <div className="mx-auto grid max-w-[960px] gap-8 md:grid-cols-2">
             {older ? (
               <Link href={`/journal/${older.slug}`} className="group flex flex-col gap-2">
-                <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-3">
+                <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
                   <span aria-hidden>←</span> Older · {older.type === "essay" ? "Essay" : "Letter"}
                 </span>
                 <span className="font-serif text-[20px] leading-[1.2] text-ink transition-colors group-hover:text-accent">
@@ -140,7 +140,7 @@ export default async function JournalPostPage(props: PageProps<"/journal/[slug]"
                 href={`/journal/${newer.slug}`}
                 className="group flex flex-col items-end gap-2 text-right md:col-start-2"
               >
-                <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-3">
+                <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
                   Newer · {newer.type === "essay" ? "Essay" : "Letter"} <span aria-hidden>→</span>
                 </span>
                 <span className="font-serif text-[20px] leading-[1.2] text-ink transition-colors group-hover:text-accent">
@@ -157,7 +157,7 @@ export default async function JournalPostPage(props: PageProps<"/journal/[slug]"
       {/* Newsletter CTA */}
       <section className="bg-paper px-pad py-pad-y">
         <div className="mx-auto flex max-w-[640px] flex-col items-center gap-6 text-center">
-          <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-3">
+          <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
             Sunday letter
           </span>
           <h2 className="m-0 font-serif font-extralight text-[clamp(28px,3vw,40px)] leading-[1.1] tracking-[-0.02em]">

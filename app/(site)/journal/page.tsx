@@ -47,7 +47,7 @@ export default function JournalPage() {
 
       <section className="border-t border-line-soft bg-paper px-pad py-pad-y">
         <div className="mx-auto flex max-w-[640px] flex-col items-center gap-6 text-center">
-          <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-3">
+          <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
             Sunday letter
           </span>
           <h2 className="m-0 font-serif font-extralight text-[clamp(28px,3.4vw,44px)] leading-[1.1] tracking-[-0.02em]">

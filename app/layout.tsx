@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Fraunces, Archivo } from "next/font/google";
+import { Fraunces, Archivo, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import "./globals.css";
+import { SITE } from "@/lib/site";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -11,14 +12,20 @@ const fraunces = Fraunces({
   style: ["normal", "italic"],
 });
 
+// Archivo is variable — omitting `weight` ships the full 100–900 axis.
 const archivo = Archivo({
   subsets: ["latin"],
   variable: "--font-archivo",
   display: "swap",
-  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://mannydevelops.com";
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
+
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -38,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${archivo.variable}`}
+      className={`${fraunces.variable} ${archivo.variable} ${jetbrains.variable}`}
       suppressHydrationWarning
     >
       <body>

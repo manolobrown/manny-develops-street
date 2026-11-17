@@ -19,7 +19,7 @@ export function LetterCard({ post }: { post: LetterPost }) {
           />
         </div>
         <div className="flex flex-col gap-3">
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-3">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
             <span className="font-semibold text-accent">Letter</span>
             <span>·</span>
             <span>Vol 01 · Week {String(post.weekNumber).padStart(2, "0")}</span>
@@ -32,7 +32,7 @@ export function LetterCard({ post }: { post: LetterPost }) {
           <p className="m-0 max-w-[48ch] font-serif italic text-[16.5px] leading-[1.5] text-ink-2">
             {post.excerpt}
           </p>
-          <span className="mt-2 font-mono text-[10.5px] font-semibold uppercase tracking-[0.16em] text-ink transition-colors group-hover:text-accent">
+          <span className="mt-2 font-mono text-[10.5px] font-semibold uppercase tracking-[0.08em] text-ink transition-colors group-hover:text-accent">
             Read letter <span aria-hidden>↗</span>
           </span>
         </div>

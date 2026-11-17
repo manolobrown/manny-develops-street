@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function JournalPostNotFound() {
   return (
     <section className="border-b border-line-soft px-pad pt-7 pb-pad-y">
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-line pb-7 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-2">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-line pb-7 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-2">
         <div>
           <span className="font-serif text-[32px] font-light italic tracking-[-0.02em] leading-none text-ink normal-case [text-transform:none]">
             § 03 · 404
@@ -27,8 +27,8 @@ export default function JournalPostNotFound() {
             <Link
               href="/journal"
               className="
-                inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5
-                font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-ink
+                inline-flex items-center gap-2 border border-line px-5 py-2.5
+                font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ink
                 transition-colors duration-[260ms] ease-editorial
                 hover:bg-ink hover:text-bg
               "

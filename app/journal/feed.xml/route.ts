@@ -1,6 +1,6 @@
 import { getJournalPosts } from "@/lib/journal";
+import { SITE } from "@/lib/site";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://mannydevelops.com";
 
 function escapeXml(s: string): string {
   return s

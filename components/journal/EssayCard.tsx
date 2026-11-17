@@ -19,7 +19,7 @@ export function EssayCard({ post }: { post: EssayPost }) {
           />
         </div>
         <div className="flex flex-col gap-3">
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-3">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
             <span className="font-semibold text-accent">Essay</span>
             <span>·</span>
             <span>{formatPostDate(post.date)}</span>
@@ -32,7 +32,7 @@ export function EssayCard({ post }: { post: EssayPost }) {
           <p className="m-0 max-w-[48ch] font-serif font-light text-[17px] leading-[1.55] text-ink-2">
             {post.dek}
           </p>
-          <span className="mt-2 font-mono text-[10.5px] font-semibold uppercase tracking-[0.16em] text-ink transition-colors group-hover:text-accent">
+          <span className="mt-2 font-mono text-[10.5px] font-semibold uppercase tracking-[0.08em] text-ink transition-colors group-hover:text-accent">
             Read essay <span aria-hidden>↗</span>
           </span>
         </div>

@@ -1,22 +1,31 @@
-import Image from "next/image";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SectionHead } from "@/components/ui/SectionHead";
-import { ClosingCta } from "@/components/ui/ClosingCta";
-import { GalleryLightbox } from "@/components/work/GalleryLightbox";
+import { Photo } from "@/components/photo/Photo";
+import { SeriesViews } from "@/components/photo/SeriesViews";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { SERIES, findSeries } from "@/content/series";
+import { getSeriesPhotos, photoHref, seriesCover } from "@/lib/photos";
+import { PERSON, SITE } from "@/lib/site";
 
 export function generateStaticParams() {
   return SERIES.map((s) => ({ slug: s.slug }));
 }
 
-export async function generateMetadata(props: PageProps<"/work/[slug]">) {
+export async function generateMetadata(props: PageProps<"/work/[slug]">): Promise<Metadata> {
   const { slug } = await props.params;
   const series = findSeries(slug);
   if (!series) return { title: "Series not found" };
+  const cover = seriesCover(series);
   return {
-    title: series.titleText,
+    title: series.title,
     description: series.description,
+    alternates: { canonical: `/work/${slug}` },
+    openGraph: {
+      title: `${series.title} — Manuel Peña`,
+      description: series.description,
+      images: [{ url: cover.src, width: cover.width, height: cover.height, alt: cover.alt }],
+    },
   };
 }
 
@@ -25,147 +34,123 @@ export default async function SeriesPage(props: PageProps<"/work/[slug]">) {
   const series = findSeries(slug);
   if (!series) notFound();
 
+  const photos = getSeriesPhotos(slug);
+  const i = SERIES.indexOf(series);
+  const nextSeries = SERIES[(i + 1) % SERIES.length];
+  const nextCover = seriesCover(nextSeries);
+
+  const facts = [
+    { t: "Frames", d: String(photos.length).padStart(2, "0") },
+    { t: "Status", d: series.status },
+    series.edit ? { t: "Edit", d: series.edit } : null,
+    series.started ? { t: "Started", d: series.started } : null,
+  ].filter((x): x is { t: string; d: string } => x !== null);
+
   return (
     <>
-      {/* Mast row */}
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-line-soft px-pad pt-7 pb-4 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-2">
-        <span>
-          <span className="font-semibold text-ink">§ 02 · {series.number}</span>
-          <span className="ml-3 text-ink-3">{series.category}</span>
-        </span>
-        <span className="text-center">{series.titleText}</span>
-        <span className="justify-self-end">
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-2 text-ink-3 transition-colors duration-[260ms] ease-editorial hover:text-ink"
-          >
-            <span aria-hidden>←</span> All work
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ImageGallery",
+          name: series.title,
+          description: series.description,
+          url: `${SITE}/work/${slug}`,
+          creator: PERSON,
+          image: photos.map((p) => ({
+            "@type": "ImageObject",
+            contentUrl: `${SITE}${p.src}`,
+            url: `${SITE}${photoHref(p)}`,
+            name: p.label,
+            description: p.alt,
+            width: p.width,
+            height: p.height,
+          })),
+        }}
+      />
+
+      {/* Header */}
+      <header className="px-pad pt-8 pb-14">
+        <div className="flex items-center justify-between border-b border-line-soft pb-3 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3">
+          <span>
+            <span className="text-ink">N°{series.number}</span>
+            <span className="mx-2">/</span>
+            {series.code}
+            <span className="mx-2">/</span>
+            {series.category}
+          </span>
+          <Link href="/work" className="hover:text-ink">
+            <span aria-hidden>←</span> All series
           </Link>
-        </span>
-      </div>
+        </div>
 
-      {/* Hero */}
-      <section className="px-pad pt-7">
-        <figure className="relative m-0 aspect-[4/3] w-full overflow-hidden bg-bg-2">
-          <Image
-            src={series.image}
-            alt={series.alt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-55% to-[rgba(20,17,13,0.65)]"
-          />
-          <figcaption className="absolute inset-x-7 bottom-7 z-[2] flex flex-wrap items-end justify-between gap-4 text-white">
-            <h1 className="m-0 max-w-[16ch] text-balance font-serif font-extralight text-[clamp(54px,9vw,140px)] leading-[0.9] tracking-[-0.035em]">
-              {series.title}
-            </h1>
-            {(() => {
-              const parts: string[] = [];
-              if (series.frames && series.frames !== "—" && series.frames !== "Scoping") {
-                parts.push(`${series.frames} frames`);
-              }
-              if (series.started && series.started !== "—") parts.push(series.started);
-              return parts.length > 0 ? (
-                <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] opacity-90">
-                  {parts.join(" · ")}
-                </span>
-              ) : null;
-            })()}
-          </figcaption>
-        </figure>
-      </section>
-
-      {/* Body grid: prose + stats */}
-      <section className="px-pad py-pad-y">
-        <div className="grid items-start gap-16 md:grid-cols-[1.6fr_1fr]">
-          <div className="flex flex-col gap-7">
-            <p className="m-0 max-w-[58ch] font-serif font-light text-[clamp(20px,2.2vw,28px)] leading-[1.35] tracking-[-0.012em] text-balance">
+        <div className="mt-10 grid items-end gap-10 md:grid-cols-[1.5fr_1fr]">
+          <h1 className="m-0 text-[clamp(52px,9vw,148px)] font-medium leading-[0.9] tracking-[-0.045em]">
+            {series.title}
+          </h1>
+          <div className="flex flex-col gap-6">
+            <p className="m-0 max-w-[46ch] text-[18px] leading-[1.5] text-ink-2 [text-wrap:pretty]">
               {series.description}
             </p>
-            {series.longDescription && (
-              <p className="m-0 max-w-[58ch] font-serif font-light text-[17px] leading-[1.55] text-ink-2">
-                {series.longDescription}
-              </p>
-            )}
-          </div>
-
-          <aside className="md:sticky md:top-[100px] md:self-start">
-            <dl className="grid grid-cols-2 gap-x-8 gap-y-5 border-t border-line py-6">
-              {[
-                { t: "Frames", d: series.frames as React.ReactNode },
-                { t: "Edit", d: series.edit as React.ReactNode },
-                { t: "Status", d: series.status },
-                { t: "Started", d: series.started as React.ReactNode },
-                ...(series.years ? [{ t: "Years", d: series.years as React.ReactNode }] : []),
-                ...(series.locations?.length
-                  ? [{ t: "Locations", d: series.locations.join(" · ") as React.ReactNode }]
-                  : []),
-              ]
-                .filter(({ d }) => d !== "—")
-                .map(({ t, d }) => (
-                  <div key={t} className="flex flex-col gap-1">
-                    <dt className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">{t}</dt>
-                    <dd className="m-0 font-serif text-[17px] font-light text-ink">{d}</dd>
-                  </div>
-                ))}
+            <dl className="m-0 grid grid-cols-2 gap-x-6 gap-y-3 border-t border-line-soft pt-4">
+              {facts.map(({ t, d }) => (
+                <div key={t} className="flex flex-col gap-0.5">
+                  <dt className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">{t}</dt>
+                  <dd className="m-0 text-[15px] text-ink">{d}</dd>
+                </div>
+              ))}
             </dl>
-          </aside>
+          </div>
         </div>
-      </section>
+      </header>
 
-      {/* Conditional frames gallery — populated by CMS later */}
-      {series.galleryFrames && series.galleryFrames.length > 0 && (
-        <section className="px-pad pb-pad-y">
-          <SectionHead num="02.A" label="Frames" date={`A selection · ${series.galleryFrames.length}`} />
-          <GalleryLightbox frames={series.galleryFrames} />
+      {series.longDescription && (
+        <section className="px-pad pb-20">
+          <p className="m-0 ml-auto max-w-[62ch] border-l border-line-soft pl-6 text-[16px] leading-[1.65] text-ink-2 md:mr-[8%]">
+            {series.longDescription}
+          </p>
         </section>
       )}
 
-      {/* Mid-page CTA strip */}
-      <aside
-        className="
-          mx-pad mb-pad-y grid items-center gap-9 border border-line bg-paper p-9
-          md:grid-cols-[auto_1fr_auto]
-        "
-      >
-        <div className="flex flex-col gap-1 font-mono text-[10.5px] uppercase tracking-[0.18em]">
-          <span>From this series</span>
-          <em className="font-serif text-[24px] font-light not-italic [font-style:italic] tracking-[-0.02em] leading-none text-accent normal-case [text-transform:none]">
-            Prints &amp; pitches
-          </em>
-        </div>
-        <p className="m-0 text-balance font-serif font-light text-[clamp(17px,2vw,22px)] leading-[1.4] tracking-[-0.01em] text-ink-2">
-          Most frames in {series.titleText} can be made to order as archival prints. Editors: full-resolution research portfolios available on request.
+      <SeriesViews photos={photos} />
+
+      {/* Prints & editorial */}
+      <aside className="mx-pad mb-24 grid gap-6 border-y border-line-soft py-8 md:grid-cols-[1fr_auto] md:items-center">
+        <p className="m-0 max-w-[60ch] text-[16px] leading-[1.55] text-ink-2">
+          Frames marked <span aria-hidden className="mx-0.5 inline-block h-1.5 w-1.5 -translate-y-0.5 rounded-full bg-accent" /> Print
+          are editioned on Hahnemühle Photo Rag. Any other frame from {series.title} can be printed to order; editors can
+          request a full-resolution research portfolio.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link
             href={`/contact?type=print&series=${series.slug}`}
-            className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line px-4 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-ink transition-colors duration-[260ms] ease-editorial hover:bg-ink hover:text-bg"
+            className="inline-flex items-center gap-2 border border-line px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.08em] text-ink transition-colors hover:bg-ink hover:text-bg"
           >
-            Request a print <span aria-hidden>↗</span>
+            Ask about a print <span aria-hidden>↗</span>
           </Link>
           <Link
             href={`/contact?type=editorial&series=${series.slug}`}
-            className="inline-flex items-center gap-2 whitespace-nowrap font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-ink hover:text-accent"
+            className="inline-flex items-center gap-2 px-1 py-2.5 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-2 hover:text-ink"
           >
             Editorial inquiry <span aria-hidden>↗</span>
           </Link>
         </div>
       </aside>
 
-      <ClosingCta
-        eyebrow="§ 02.C · For editors"
-        headline={<>Pitching <em>this</em>?</>}
-        body={`Full-resolution research portfolios for ${series.titleText}, project notes, and locations on request. Reply within two business days.`}
-        actions={[
-          { label: "Request portfolio", href: `/contact?type=editorial&series=${series.slug}`, primary: true },
-          { label: "editorial@mannydevelops.com", href: "mailto:editorial@mannydevelops.com" },
-        ]}
-      />
+      {/* Next series */}
+      <Link
+        href={`/work/${nextSeries.slug}`}
+        className="group mx-pad mb-pad-y grid items-end gap-6 md:grid-cols-[1fr_auto]"
+      >
+        <div className="flex flex-col gap-3">
+          <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3">
+            Next series · N°{nextSeries.number}
+          </span>
+          <span className="text-[clamp(40px,6vw,96px)] font-medium leading-[0.92] tracking-[-0.04em] transition-colors group-hover:text-ink-2">
+            {nextSeries.title} <span aria-hidden className="text-ink-3">→</span>
+          </span>
+        </div>
+        <Photo photo={nextCover} alt="" sizes="240px" className="hidden max-h-[180px] w-auto md:block" />
+      </Link>
     </>
   );
 }
