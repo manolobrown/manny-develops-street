@@ -29,9 +29,9 @@ export default function ShopPage() {
         lede="Archival pigment prints on Hahnemühle Photo Rag, signed and numbered for limited editions. Plus a small set of Lightroom presets, reverse-engineered from my own catalog — three free, the full ten for $38."
       />
 
-      {/* § 05.A · Prints */}
+      {/* Prints */}
       <section className="px-pad py-pad-y">
-        <SectionHead num="04.A" label="Fine-art prints" date="9 editions · Open + Limited" />
+        <SectionHead label="Fine-art prints" date="9 editions · Open + Limited" />
         <PrintsFilter
           prints={PRINTS.map((p) => {
             const photo = photoBySrc(p.image);
@@ -41,9 +41,9 @@ export default function ShopPage() {
         />
       </section>
 
-      {/* § 05.B · Presets */}
+      {/* Presets */}
       <section id="presets" className="bg-paper px-pad py-pad-y">
-        <SectionHead num="04.B" label="Lightroom presets · Edit like me" date="10 presets · .xmp + .dng" />
+        <SectionHead label="Lightroom presets · Edit like me" date="10 presets · .xmp + .dng" />
 
         {/* Provenance story + 2x2 stats */}
         <div className="grid items-center gap-12 pt-10 md:grid-cols-[1.2fr_1fr]">
@@ -183,9 +183,9 @@ export default function ShopPage() {
         </div>
       </section>
 
-      {/* § 05.C · Print details */}
+      {/* Print details */}
       <section className="px-pad py-pad-y">
-        <SectionHead num="04.C" label="The print details" date="Paper · Editions · Shipping" />
+        <SectionHead label="The print details" date="Paper · Editions · Shipping" />
         <div className="grid gap-10 pt-10 md:grid-cols-3">
           {[
             {
