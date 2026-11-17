@@ -8,20 +8,29 @@ import { PERSON, SITE, SITE_NAME } from "@/lib/site";
 
 const LEAD = "/images/work/shadow-play/shadow-play-8.jpg";
 
-// The home-page edit: a dozen frames across all six series, in reading order.
-const SELECTED = [
-  "/images/work/through-the-glass/through-the-glass-7.jpg",
-  "/images/work/after-dark/after-dark-6.jpg",
-  "/images/work/steam-city/steam-city.jpg",
-  "/images/work/reflections/reflections-5.jpg",
-  "/images/work/white-out/white-out-5.jpg",
-  "/images/work/through-the-glass/through-the-glass-3.jpg",
-  "/images/work/after-dark/after-dark.jpg",
-  "/images/work/shadow-play/shadow-play-4.jpg",
-  "/images/work/reflections/reflections-7.jpg",
-  "/images/work/steam-city/steam-city-8.jpg",
-  "/images/work/white-out/white-out.jpg",
-  "/images/work/after-dark/after-dark-2.jpg",
+// The home-page edit: a dozen frames across all six series, set in fixed rows
+// so every row fills the width (no orphan on the last line).
+const SELECTED_ROWS = [
+  [
+    "/images/work/through-the-glass/through-the-glass-7.jpg",
+    "/images/work/after-dark/after-dark-6.jpg",
+    "/images/work/steam-city/steam-city.jpg",
+  ],
+  [
+    "/images/work/reflections/reflections-5.jpg",
+    "/images/work/white-out/white-out-5.jpg",
+  ],
+  [
+    "/images/work/through-the-glass/through-the-glass-3.jpg",
+    "/images/work/after-dark/after-dark.jpg",
+    "/images/work/shadow-play/shadow-play-4.jpg",
+    "/images/work/reflections/reflections-7.jpg",
+  ],
+  [
+    "/images/work/steam-city/steam-city-8.jpg",
+    "/images/work/after-dark/after-dark-2.jpg",
+    "/images/work/white-out/white-out.jpg",
+  ],
 ];
 
 function mustFind(src: string): PhotoData {
@@ -32,7 +41,8 @@ function mustFind(src: string): PhotoData {
 
 export default function HomePage() {
   const lead = mustFind(LEAD);
-  const selected = SELECTED.map(mustFind);
+  const rows = SELECTED_ROWS.map((row) => row.map(mustFind));
+  const selected = rows.flat();
   const totalFrames = getAllPhotos().length;
 
   return (
@@ -98,19 +108,30 @@ export default function HomePage() {
           </h2>
           <span className="tabular-nums">{String(selected.length).padStart(2, "0")} frames</span>
         </div>
-        <ol className="justified m-0 list-none p-0 [--gap:10px] [--row:220px] md:[--row:340px]">
-          {selected.map((p) => (
-            <li key={p.src} style={{ "--ar": (p.width / p.height).toFixed(4) } as React.CSSProperties}>
-              <Link href={photoHref(p)} className="group block">
-                <Photo
-                  photo={p}
-                  sizes="(min-width: 768px) 40vw, 60vw"
-                  className="w-full transition-opacity duration-[260ms] group-hover:opacity-85"
-                />
-                <span className="mt-1.5 block font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3 transition-colors group-hover:text-ink">
-                  {p.label}
-                </span>
-              </Link>
+        {/* Desktop: each row is justified to full width. Phones: one frame per line. */}
+        <ol className="m-0 flex list-none flex-col gap-2.5 p-0">
+          {rows.map((row, i) => (
+            <li key={i}>
+              <ol className="m-0 flex list-none flex-col gap-2.5 p-0 md:flex-row">
+                {row.map((p) => (
+                  <li
+                    key={p.src}
+                    className="md:[flex:var(--ar)_1_0%]"
+                    style={{ "--ar": (p.width / p.height).toFixed(4) } as React.CSSProperties}
+                  >
+                    <Link href={photoHref(p)} className="group block">
+                      <Photo
+                        photo={p}
+                        sizes="(min-width: 768px) 40vw, 100vw"
+                        className="w-full transition-opacity duration-[260ms] group-hover:opacity-85"
+                      />
+                      <span className="mt-1.5 block font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3 transition-colors group-hover:text-ink">
+                        {p.label}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
             </li>
           ))}
         </ol>
