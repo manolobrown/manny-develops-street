@@ -1,5 +1,10 @@
 import type { PressItem } from "@/components/ui/PressList";
 
+// TODO(manny): confirm each credit below is real (outlet, date, link). The
+// list stays hidden on the site until PRESS_VERIFIED is flipped to true —
+// unverifiable press is worse than none.
+export const PRESS_VERIFIED = false;
+
 export const PRESS: PressItem[] = [
   { when: "Feb 2026", what: <><em>Through the Glass</em> · feature in the photo column</>, who: "New York Magazine" },
   { when: "Jan 2026", what: <>&quot;Steam City&quot; · winter portfolio inclusion</>, who: "Curbed" },

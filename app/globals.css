@@ -4,25 +4,28 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ─────────────────────────────────────────────────────────────────────────
-   Design tokens — ported verbatim from design_handoff_photography_portfolio/
-   hybrid.css. The --hp-* vars are the single source of truth and flip on
-   dark mode. Tailwind utilities are exposed through @theme inline so they
-   resolve to the current theme at runtime.
+   Design tokens — Gallery Dark (feature/gallery-dark-redesign).
+   Dark is the default; [data-theme="light"] is the warm-paper alternate.
+   The --hp-* vars are the single source of truth. Tailwind utilities are
+   exposed through @theme inline so they resolve to the current theme at
+   runtime. Palette matches the brand: #111 canvas, warm off-white ink,
+   street-red #C0392B accent.
    ──────────────────────────────────────────────────────────────────────── */
 
 :root {
-  --hp-bg:        #f5f2ec;
-  --hp-bg-2:      #ebe6dc;
-  --hp-fg:        #18140f;
-  --hp-fg-2:      #4a443c;
+  --hp-bg:        #111111;
+  --hp-bg-2:      #181818;
+  --hp-fg:        #f4f1ec;
+  --hp-fg-2:      #b8b2a8;
   --hp-fg-3:      #8a8378;
-  --hp-line:      #18140f;
-  --hp-line-soft: rgba(24, 20, 15, 0.16);
-  --hp-line-hair: rgba(24, 20, 15, 0.10);
-  --hp-accent:    #c84e1e;
-  --hp-paper:     #fdfbf6;
-  --hp-dark:      #14110d;
-  --hp-dark-fg:   #f0ece3;
+  --hp-line:      #f4f1ec;
+  --hp-line-soft: rgba(244, 241, 236, 0.16);
+  --hp-line-hair: rgba(244, 241, 236, 0.08);
+  --hp-accent:    #c0392b;
+  --hp-viewer-bg: #000000;
+  --hp-paper:     #181818;
+  --hp-dark:      #f4f1ec;
+  --hp-dark-fg:   #111111;
 
   --hp-pad:       clamp(20px, 4vw, 56px);
   --hp-pad-y:     clamp(80px, 9vw, 140px);
@@ -30,18 +33,18 @@
   --hp-t:         260ms cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 
-[data-theme="dark"] {
-  --hp-bg:        #0e0c09;
-  --hp-bg-2:      #181410;
-  --hp-fg:        #f0ece3;
-  --hp-fg-2:      #b8b0a3;
-  --hp-fg-3:      #6f685c;
-  --hp-line:      #f0ece3;
-  --hp-line-soft: rgba(240, 236, 227, 0.16);
-  --hp-line-hair: rgba(240, 236, 227, 0.08);
-  --hp-paper:     #14110d;
-  --hp-dark:      #f5f2ec;
-  --hp-dark-fg:   #18140f;
+[data-theme="light"] {
+  --hp-bg:        #f4f1ec;
+  --hp-bg-2:      #e5e0d8;
+  --hp-fg:        #18140f;
+  --hp-fg-2:      #4a443c;
+  --hp-fg-3:      #655f55;
+  --hp-line:      #18140f;
+  --hp-line-soft: rgba(24, 20, 15, 0.16);
+  --hp-line-hair: rgba(24, 20, 15, 0.10);
+  --hp-paper:     #fdfbf6;
+  --hp-dark:      #111111;
+  --hp-dark-fg:   #f4f1ec;
 }
 
 @theme inline {
@@ -55,12 +58,13 @@
   --color-line-soft: var(--hp-line-soft);
   --color-line-hair: var(--hp-line-hair);
   --color-accent:    var(--hp-accent);
+  --color-viewer:    var(--hp-viewer-bg);
   --color-dark:      var(--hp-dark);
   --color-dark-fg:   var(--hp-dark-fg);
 
-  --font-serif: var(--font-newsreader), "Times New Roman", Georgia, serif;
-  --font-sans:  var(--font-manrope), system-ui, sans-serif;
-  --font-mono:  var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans:  var(--font-archivo), Helvetica, system-ui, sans-serif;
+  --font-mono:  var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
 
   --spacing-pad:   var(--hp-pad);
   --spacing-pad-y: var(--hp-pad-y);
@@ -81,8 +85,8 @@ html, body { margin: 0; }
 body {
   background: var(--hp-bg);
   color: var(--hp-fg);
-  font-family: var(--font-serif);
-  font-size: 17px;
+  font-family: var(--font-sans);
+  font-size: 16px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -93,17 +97,42 @@ img { max-width: 100%; display: block; }
 
 ::selection { background: var(--hp-accent); color: #fff; }
 
-/* Editorial small-caps mono label — used for § NN, masthead, chip text */
+/* Contact-sheet metadata label — catalogue numbers, places, years */
 .mono-label {
   font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
-/* Editorial accent — burnt orange italic emphasis on display type */
-em { color: var(--hp-accent); font-style: italic; }
+/* Display type never swaps style mid-line: <em> inside headings reads as
+   plain text. Emphasis in running prose stays a quiet italic. */
+h1 em, h2 em, h3 em, h4 em, strong em { font-style: inherit; color: inherit; }
+em { color: inherit; }
+
+h1, h2, h3 { text-wrap: balance; }
+
+:focus-visible { outline: 2px solid var(--hp-accent); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Justified rows: each tile grows in proportion to its aspect ratio, so every
+   row fills the measure without cropping. The trailing pseudo-element keeps
+   the last row from stretching. Set --ar (w/h) on each tile. */
+.justified { display: flex; flex-wrap: wrap; gap: var(--gap, 12px); }
+.justified::after { content: ""; flex-grow: 999999; }
+.justified > * {
+  flex-grow: calc(var(--ar) * 100);
+  flex-basis: calc(var(--ar) * var(--row, 260px));
+  position: relative;
+}
 
 @keyframes so-rise {
   from { opacity: 0; transform: translate(-50%, 24px); }

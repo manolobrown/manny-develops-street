@@ -1,19 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const STORAGE_KEY = "mp-optin-dismissed";
+
+function wasDismissed() {
+  try {
+    return window.localStorage.getItem(STORAGE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
 
 export function StickyOptin() {
   const [state, setState] = useState<"hidden" | "shown" | "thanks" | "dismissed">("hidden");
   const [email, setEmail] = useState("");
+  // Stay out of the way where the photographs are the whole point.
+  const onWorkPage = usePathname().startsWith("/work");
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.localStorage.getItem(STORAGE_KEY) === "1") {
-      setState("dismissed");
-      return;
-    }
+    // Already dismissed: stay "hidden" and never listen for scroll.
+    if (wasDismissed()) return;
     const onScroll = () => {
       if (window.scrollY > 600) setState((s) => (s === "hidden" ? "shown" : s));
     };
@@ -23,7 +31,11 @@ export function StickyOptin() {
   }, []);
 
   const dismiss = () => {
-    window.localStorage.setItem(STORAGE_KEY, "1");
+    try {
+      window.localStorage.setItem(STORAGE_KEY, "1");
+    } catch {
+      // Storage blocked (private mode): it just won't be remembered.
+    }
     setState("dismissed");
   };
 
@@ -45,17 +57,16 @@ export function StickyOptin() {
     setTimeout(dismiss, 1400);
   };
 
-  if (state === "hidden" || state === "dismissed") return null;
+  if (onWorkPage || state === "hidden" || state === "dismissed") return null;
 
   return (
-    <div
-      role="dialog"
+    <aside
       aria-label="Free preset pack"
       className="
         fixed left-1/2 bottom-[18px] z-[60] -translate-x-1/2
         flex items-center gap-[18px]
-        rounded-full bg-ink text-bg
-        py-2.5 pl-[22px] pr-3.5
+        bg-ink text-bg
+        py-2.5 pl-4 pr-2.5 md:pl-[22px]
         shadow-[0_16px_40px_-12px_rgba(0,0,0,0.35)]
         max-w-[calc(100%-32px)]
         animate-[so-rise_0.45s_cubic-bezier(0.2,0.6,0.2,1)]
@@ -64,15 +75,15 @@ export function StickyOptin() {
     >
       {state === "shown" && (
         <>
-          <span className="font-mono text-[10px] uppercase tracking-[0.16em] opacity-70 whitespace-nowrap">
-            ★ Free · Lightroom preset pack
+          <span className="hidden font-mono text-[10px] uppercase tracking-[0.08em] opacity-70 whitespace-nowrap lg:inline">
+            Free · Lightroom preset pack
           </span>
-          <span className="font-serif text-[17px] tracking-[-0.005em] whitespace-nowrap">
-            Three presets, on the house. <em className="italic text-bg">One email.</em>
+          <span className="hidden font-sans text-[16px] tracking-[-0.005em] whitespace-nowrap md:inline">
+            Three presets, on the house.
           </span>
           <form
             onSubmit={onSubmit}
-            className="flex items-center gap-1 rounded-full bg-bg/10 py-1 pl-3.5 pr-1"
+            className="flex min-w-0 items-center gap-1 bg-bg/10 py-1 pl-3 pr-1"
           >
             <input
               type="email"
@@ -81,15 +92,15 @@ export function StickyOptin() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="
-                w-[180px] border-none bg-transparent text-[13px] text-bg outline-none
+                w-[150px] min-w-0 border-none md:w-[180px] bg-transparent text-[13px] text-bg outline-none
                 font-sans placeholder:text-bg/50
               "
             />
             <button
               type="submit"
               className="
-                rounded-full bg-bg text-ink px-3.5 py-2
-                font-mono text-[10px] font-medium uppercase tracking-[0.14em] whitespace-nowrap
+                bg-bg text-ink px-3 py-2
+                font-mono text-[10px] uppercase tracking-[0.08em] whitespace-nowrap
               "
             >
               Send it ↗
@@ -100,7 +111,7 @@ export function StickyOptin() {
             onClick={dismiss}
             aria-label="Dismiss"
             className="
-              flex h-7 w-7 items-center justify-center rounded-full
+              flex h-7 w-7 shrink-0 items-center justify-center
               border border-bg/20 bg-transparent text-bg text-[12px]
               transition-[border-color] duration-[260ms] ease-editorial hover:border-bg/40
             "
@@ -110,8 +121,8 @@ export function StickyOptin() {
         </>
       )}
       {state === "thanks" && (
-        <span className="font-serif text-[16px] px-2">✓ On its way — check your inbox.</span>
+        <span className="font-sans text-[16px] px-2">✓ On its way — check your inbox.</span>
       )}
-    </div>
+    </aside>
   );
 }

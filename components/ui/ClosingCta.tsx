@@ -13,14 +13,14 @@ export function ClosingCta({ eyebrow, headline, body, actions }: Props) {
   return (
     <section className="bg-dark text-dark-fg px-pad py-pad-y">
       <div className="mx-auto flex max-w-[1080px] flex-col items-center gap-7 text-center">
-        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-dark-fg/60">
+        <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-dark-fg/60">
           {eyebrow}
         </span>
-        <h2 className="m-0 font-serif font-extralight text-[clamp(80px,12vw,200px)] leading-[0.9] tracking-[-0.045em]">
+        <h2 className="m-0 font-sans font-medium text-[clamp(56px,9vw,144px)] leading-[0.9] tracking-[-0.045em]">
           {headline}
         </h2>
         {body && (
-          <p className="m-0 max-w-[64ch] text-balance font-serif font-light text-[clamp(18px,2vw,24px)] leading-[1.45] tracking-[-0.008em] text-dark-fg/80">
+          <p className="m-0 max-w-[64ch] text-balance font-sans font-light text-[clamp(18px,2vw,24px)] leading-[1.45] tracking-[-0.008em] text-dark-fg/80">
             {body}
           </p>
         )}
@@ -30,13 +30,13 @@ export function ClosingCta({ eyebrow, headline, body, actions }: Props) {
               key={a.href + a.label}
               href={a.href}
               className={`
-                inline-flex items-center gap-3 rounded-full px-[26px] py-[18px]
-                font-mono text-[12px] font-medium uppercase tracking-[0.14em]
+                inline-flex items-center gap-3 px-[22px] py-[16px]
+                font-mono text-[11px] uppercase tracking-[0.08em]
                 transition-colors duration-[260ms] ease-editorial
                 ${
                   a.primary
-                    ? "bg-dark-fg text-dark border border-dark-fg hover:bg-accent hover:text-white hover:border-accent"
-                    : "border border-dark-fg/30 text-dark-fg hover:bg-accent hover:text-white hover:border-accent"
+                    ? "bg-dark-fg text-dark border border-dark-fg hover:opacity-85"
+                    : "border border-dark-fg/30 text-dark-fg hover:border-dark-fg"
                 }
               `}
             >

@@ -27,14 +27,14 @@ export function NewsletterForm() {
 
   if (state === "sent") {
     return (
-      <div className="border-y border-line py-6 font-serif italic text-[17px] text-ink">
+      <div className="border-y border-line py-6 font-sans italic text-[17px] text-ink">
         ✓ On its way — check your inbox to confirm.
       </div>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex overflow-hidden rounded-full border border-line">
+    <form onSubmit={onSubmit} className="flex overflow-hidden border border-line">
       <input
         type="email"
         name="email"
@@ -46,7 +46,7 @@ export function NewsletterForm() {
         type="submit"
         disabled={state === "sending"}
         className="
-          bg-ink px-[22px] py-3 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-bg
+          bg-ink px-[22px] py-3 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-bg
           transition-opacity hover:opacity-[0.88] disabled:opacity-50
         "
       >

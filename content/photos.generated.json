@@ -1,0 +1,314 @@
+{
+  "/images/work/after-dark/after-dark-2.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwAgCdASoLABAAA4BaJbACw+BLwYu4l6TaAAD+0PzuyGdQcs32660fiD9h/3Yl75t4yv1a/6gVqhaQFjyz0e4WvYkz99eX2+gOk+/6wEtQwwirec2i2KYpgAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/after-dark/after-dark-3.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABQAgCdASoLABAAA4BaJQBOj+ADFqTP1JM/BAAA/tKxG2axAO/R0MTANIlCminEM47SLZaYQ48QQzJfzPSsH8UdXHkkaIq+TPZsw8JJWIx63OcoDIAAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/after-dark/after-dark-4.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQAgCdASoLABAAA4BaJQBOgCFsm5UyfcQAAP70nUZs5H1tO+DPwdZ/LDzZneCv9er3Uiyo6XUyOyP9RN0Q0d/UjHwbr8gSwAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/after-dark/after-dark-5.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAACQAQCdASoLABAAA4BaJQAAXMPDbkAA/u0mPeP/0Bisj6TgKNFJtXKQ3rpBv+U25NMBWqCL89GeuzfCBAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/after-dark/after-dark-6.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACQAQCdASoQAAsAA4BaJZQAAkrcHgAA/njrIHBPebxHTJwdb7V2mePutZlIAbUSCFFYCAhk9p6dAAAA",
+    "modified": "2026-05-28"
+  },
+  "/images/work/after-dark/after-dark-7.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoQAAsAA4BaJYwC7AC7ilkxUAD+7sQNcUgcILSr6dhBou5h2aXkYHEYTYj7uvuXGyUmTGKg6PT4XyP65vqAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/after-dark/after-dark-8.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoLABAAA4BaJYwCdAEO5DiTYAAA/vV5gx4a0/6+EDyZUXQ1KmUi3rw2SLT2SutHw462IB3M+4OPv/rrKKwy3x+JwiHAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/after-dark/after-dark-9.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADQAQCdASoQAAsAA4BaJZQC/ODJ/ooYAAD+81Ro78Xj3pjkpO2yxppvJTvOF4gJB7hPG3ajV81BzHEQAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/after-dark/after-dark.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAQCdASoLABAAA4BaJQBOgCMDIt+h6AAA/u9c3YXbunjUlnjVpY/evPN74odIw98BV5s6Vqd8c8PR/mEIMgdWZTcoVq26IF3COSKXltV087RUjNEHjiGwYAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/reflections/reflections-2.jpg": {
+    "width": 2400,
+    "height": 1587,
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoQAAsAA4BaJQBOgCBzz8EAAAD+7L+/pvmMdq0mMWFYXnkBSvWFUHO4rcdhlGaXZ6B+2ITdF/COtvKChgA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/reflections/reflections-3.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwAQCdASoQAAsAA4BaJZQCdABv5z8gAP7qSZTHTyn0Q8bOGFNXJyJKMwEA2+bP8d4CfTgfkKVM0afOG9OCyU3ZDHe29nI7kr4+eCfEJnfvCQm6KrgAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/reflections/reflections-4.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwAgCdASoQAAsAA4BaJQBdgMXS5qUHl4rAAAD5eFolNpzMyM1+L0IMSvTCIqKB1XgLxoL2otybBXMUu3NoAm3cE+HgjENcH/Yu2EHU6lOiAEJipxP6PzNAAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/reflections/reflections-5.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACwAQCdASoQAAsAA4BaJZwAAhvmKVMAAP71zT+v2zgxdwYma3sn25PKXZK2o6TW/0/3Slkq88gGxgAA",
+    "modified": "2026-05-28"
+  },
+  "/images/work/reflections/reflections-6.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoLABAAA4BaJZQC7AELg5vbC2AA/tH/C++uhqSr3osA2XVnMlCdEkoV6XSAMKyVU0EWm50ErLvDLfbapphmbWGEdpHpzyr0AAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/reflections/reflections-7.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQAgCdASoLABAAA4BaJaQAAloEvZ/IgMeAAP7rqFxphOk619QsGD+10+qtj+WM2I0JArX9I2ZGAALR7+EDouqbB290FcsmD9vD33/qEQspwqepZpucm/kAAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/reflections/reflections-8.jpg": {
+    "width": 1587,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABQAgCdASoLABAAA4BaJZwAD46taqL1TRguUAAA/vXaOD95rtnr3rXvZ6eFvxNdBVWLplZ17ktSqLL2EX7DeibG9M7Xku7DSbpBVhpWJdX5s78NYdqxI4JPhG4JsrecIAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/reflections/reflections.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAQCdASoLABAAA4BaJZQCdAD5jjwBkwAA/uDZhdquAGeth1Wu2TPzwd48w8Ms5KfHopIgrYAXO1K6VoAZujcUbVqWwPym5sn+g1024KgO5pzAmtBKyyIuIsApPzGAAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/shadow-play/shadow-play-2.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACwAQCdASoLABAAA4BaJaQAApyny7QAAP7zV1xZ+tOuRRQwJCpMqMc4FsLgjmwAAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/shadow-play/shadow-play-3.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQAgCdASoLABAAA4BaJYgCdH8AGZMJfVIecAAA/k/CJueyt5oauBwuwGN9KJuUAUEFuWD/yBQenkj4bvQXZE5elG8O4wui9GcyPIcLejFCW8WZjRX3r3kwnflp9YrslpZL7qAlAUAAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/shadow-play/shadow-play-4.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAgCdASoLABAAA4BaJZACw7EXZxKIdUoAAP70ry/coOPjZOhq767I5wM0r6pBDMkYtWFx0hMt4W2ZjX/FTrwAAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/shadow-play/shadow-play-5.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABQAgCdASoLABAAA4BaJZQCdAEK1IQWuiNeOAAA/tJrWhCynCQMHhUoGn8yuuO4T/jd5BziI319rvlwFShMLsFMcy0hewTA+C1ddLkv0inpEg0ugORMAAAA",
+    "modified": "2026-05-28"
+  },
+  "/images/work/shadow-play/shadow-play-6.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAACwAQCdASoQAAsAA4BaJZQAAxfyLzIAAP74W2BvE7UZBPxnMhBu6vxU/p+k06IAHhxz6TzhQBz8DmgkYAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/shadow-play/shadow-play-7.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQAgCdASoLABAAA4BaJbACdAELW9q2uE4AAP7qGvVEQK5iCBxau2fiCsiMaFKCwjPmP7I+2EpyRtl6LxM5e9gtbeaBbDhZKTgBuMR26WrEMtSpQi2x/Gx7IKESVwJG7HwWgAAA",
+    "modified": "2026-05-28"
+  },
+  "/images/work/shadow-play/shadow-play-8.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAQCdASoQAAsAA4BaJZwAAvZNmSWNoAD+8hCQ2Oav0oZIEutJQ+bCqd6TdandEhKskTRhw3eRwvxnP/jGvocAeUe56yoOA1yLRwAA",
+    "modified": "2026-05-28"
+  },
+  "/images/work/shadow-play/shadow-play-9.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACQAQCdASoQAAsAA4BaJQBWACKA0AAA/uyeeT88UtMPpOreCjnYu+Jl0RAdmy6b94ClPc5TxYI9SWsVJn1eG5LtLdpI4p6gAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/shadow-play/shadow-play.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAAAQAgCdASoQAAsAA4BaJZwCdAEO+ZvbMJwAAP72khHb+g0cC6H6HxP8DQ5ZlK+qgXvElckvwVfXXtsgAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/steam-city/steam-city-2.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoQAAsAA4BaJQBOgB6WHvv+3G2AAP70tK86AfL58orB/zQBBMG7fICtD5TIM6rkXLHa7gZMx/tRSvq/dfjqlXenF3BTnNAgjmaAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/steam-city/steam-city-3.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQAgCdASoQAAsAA4BaJZQC7ADp9StEay0AAP7ytiDPXEaRaaWRg6bOy+MRLpjHFwEQhFpPHwktvkVLKMh6ccKgt6P7B2HAAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/steam-city/steam-city-4.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAQCdASoLABAAA4BaJZwAAfll5uDTAAD+6loAfa8ZkCJXPGmeXu28P3g2s0AziW3M7TMc077+vAXeYnnqxDFEQG3VCOUfcDovt8kprlV3RyFU8+Wo0AAA",
+    "modified": "2026-05-28"
+  },
+  "/images/work/steam-city/steam-city-5.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoQAAsAA4BaJYwCdAD1CsdPtYAA9AwgG8NoxeB+QaJPWuKc7VwOnkR/gX6Lzuwcw6AkVgytIn0CPieL4ImxJsFbsNqjwAAA",
+    "modified": "2026-05-28"
+  },
+  "/images/work/steam-city/steam-city-6.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACQAQCdASoQAAsAA4BaJZwAAqp7XgAA/cAlkolVVoA9jKjssAWWiFfxQAZWbps02T4BRrSQ2Lpz1uH7s7iexPgRofAx5xR3geE3t3KvCxkJJhWwAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/steam-city/steam-city-7.jpg": {
+    "width": 2400,
+    "height": 1602,
+    "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQAgCdASoQAAsAA4BaJaACdAEQ3Fpbn84AAPx1wgT6GWORs1uzh6xw9wlvAvffRMNM+MqS0HLiDy75QhpqpkG9QZAitD0h+P2wn0EuJijJiEAWnfBsiFQxwAoYC36ZZ3gAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/steam-city/steam-city-8.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQAQCdASoQAAsAA4BaJaQAAn/rZA3gAAD+3jkKNvbf55vIAYIon5SEaZPHPZC/1F1l8jP0G+vPwk3h+UngmKI2UwZ0AgNz2V0ytzIj6DLZT8BAK0EnUro6S5QAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/steam-city/steam-city-9.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAQCdASoLABAAA4BaJYwAAlyr5NgAAPzqQa2JUJA21Xwrtyu1ORYSZUTG/emK33+ZWRsj/VsSs32Ou7O28BmyIZBEDD66SwgAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/steam-city/steam-city.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoLABAAA4BaJQBOgBuwkkv5KAUAAOJfIjMUaRXjy4trUYxVegF67CmF3CXjaSkC5loeajQbwNyu1yn8aVcpYEy0wgG65dWn5gAAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/through-the-glass/through-the-glass-2.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoLABAAA4BaJYwC7ADcfDksQPgA/cPl4z/Hf1SYL7/vqgWwV2V5q7MEFi+kz7BmZEdeFbQTK/ZYylbG9BtYmvWUs+EQUNx5RqmKMZElvVgAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/through-the-glass/through-the-glass-3.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACwAQCdASoLABAAA4BaJZQAAlprUxsgAPaFpyXodPANA+u/EI/Ue6vycH5fvAPyseptcI4ZAjK2MxgrKtqovGK6wAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/through-the-glass/through-the-glass-4.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABQAgCdASoLABAAA4BaJZQCdAYv1vtxysVdQIAA/un5AN3vlxKoXz7fwcaLVN3BOPkSksqvFZ4ry6DDfdaRuzDRr0uhKpl7EML3q0rU32ZxnyvGAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/through-the-glass/through-the-glass-5.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoLABAAA4BaJZwAAttv+2F5JjAA/u970fQfJCY21P957NcjvIxdbmAbJFBrQaXlm8woQPp/QhRBBvMAvCGzekO4KWAAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/through-the-glass/through-the-glass-6.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACQAQCdASoQAAsAA4BaJQBYdg4OhYAA/uldHgYC2YTuWObdTxXUyRWedppm5ufSZKynSHr3hr1qiYrAR6a8WruXnbYuzkKXusr+b4YQK9huL0IAAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/through-the-glass/through-the-glass-7.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAQCdASoLABAAA4BaJZwAAuaVvoKXYAD+9pn3QOeg0DSQACNba2e5vCa6Euy3Z4UO/FtksTAwHPsMm4a2QLruJv+dC6eQGk7OJ4AA",
+    "modified": "2026-05-28"
+  },
+  "/images/work/through-the-glass/through-the-glass-8.jpg": {
+    "width": 1587,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAQAgCdASoLABAAA4BaJZQAAu18SqBX5g4AAP7mo7TPMUT3LRxXj9+3G47weThcJyRSCtjtJTh7BTFTrnzJ6mHoouDiIfKUawAAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/through-the-glass/through-the-glass.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoQAAsAA4BaJZwAAv1x+/SuYAAA/tB0edcLQJL1pKvWcBnuofdHuJBEqS3HvOIG3kZbt+aP9uCOxvNfzhYXoEAA",
+    "modified": "2026-05-28"
+  },
+  "/images/work/white-out/white-out-2.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoLABAAA4BaJZwC7AEKnrZ3JXoAAP5smrAjCEA6/XbBHxBQ+kaG4qzmY9AY26k0WLYTd8w1Ta4YCjDWpQZwlpngui2wkW+0AAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/white-out/white-out-3.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAsAA4BaJZwCw7CZAHQlAAD73pH4uL+D7am8a0M/rI5T2/cReAxi1/Y5SjyRwUJG90uOPVb22XBNDzOpS5fP98vC/EAteAAAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/white-out/white-out-4.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAABQAgCdASoLABAAA4BaJQBOgMWvtfx7P9JFcwAA/Z1k3HahEBvP5orWnLlh/ylbVOHOSC2t6WI19mwvPUPeKg4rbgq3cYnz0YQ8hKyowIZBoUCcz1CwFKK3k1qRAt3E9kinTfAA",
+    "modified": "2026-05-28"
+  },
+  "/images/work/white-out/white-out-5.jpg": {
+    "width": 2400,
+    "height": 1602,
+    "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAQCdASoQAAsAA4BaJYwCdAEUoJ/rD2AAzj5duWi/N2U7aUc87kLnpaFJ1kjT5ftmuA9562CIgILEav+fJV7WhoAVSLzaGe8TkRO8fdNFo1ctoHhBfQPBgAAAAA==",
+    "modified": "2026-05-28"
+  },
+  "/images/work/white-out/white-out-6.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAQCdASoQAAsAA4BaJQBOgA2KW+8AAP7s3pNr2dstT+jh+cCaufWCOUb4oH6z0gTgX0wby+M4UBADlye8+sMigy2dLxpeog122oDZQCcmAAAA",
+    "modified": "2026-05-28"
+  },
+  "/images/work/white-out/white-out-7.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADwAQCdASoQAAsAA4BaJQBYdiPapbSenAAA/uz8eCFUsg8bncIH92zW4XvlJ12RuCH/UR6WhCmUhRMrBrgmmgZAAAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/white-out/white-out-8.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAQCdASoLABAAA4BaJYwAAl2KJZF20AD1mLd90JtTfxIYj3ucBsulB0gS3+mKeGsWL4CC9fQQlpg2qQeoON5VyCYbkSuANTVU/dDEPGqkuJUrF/ABNcAA",
+    "modified": "2026-05-28"
+  },
+  "/images/work/white-out/white-out-9.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoQAAsAA4BaJYwCdADz59sOAAD+0MhfA/+gLx1znU5ntD1c0N8ILQcVFa5354Qm7zbTcDe4Ca5CsrFCgAA=",
+    "modified": "2026-05-28"
+  },
+  "/images/work/white-out/white-out.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAwAgCdASoQAAsAA4BaJagC7ADjcLrSpCakYgD8MdOZPBdUt31lLj/yr9Wkg6g5fKdUCkDZdgEzP9orGaPnT777x20lYEuOaDzTeu41ZZi6+5058jUvRj3kq/wL2dOlOj66HwAA",
+    "modified": "2026-05-28"
+  }
+}

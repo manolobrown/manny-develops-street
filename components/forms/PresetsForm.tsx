@@ -28,10 +28,10 @@ export function PresetsForm() {
   if (state === "sent") {
     return (
       <div className="mt-auto flex flex-col gap-2 border-t border-line-hair pt-5">
-        <span className="font-serif italic text-[17px] text-ink">
+        <span className="font-sans text-[17px] text-ink">
           ✓ Check your inbox to confirm.
         </span>
-        <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-ink-3">
+        <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
           Download link arrives right after you click the confirm button.
         </span>
       </div>
@@ -40,7 +40,7 @@ export function PresetsForm() {
 
   return (
     <form onSubmit={onSubmit} className="mt-auto flex flex-col gap-3">
-      <div className="flex overflow-hidden rounded-full border border-line">
+      <div className="flex overflow-hidden border border-line">
         <input
           type="email"
           name="email"
@@ -53,14 +53,14 @@ export function PresetsForm() {
           type="submit"
           disabled={state === "sending"}
           className="
-            bg-ink px-[22px] py-3 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-bg
+            bg-ink px-[22px] py-3 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-bg
             transition-opacity hover:opacity-[0.88] disabled:opacity-50
           "
         >
           {state === "sending" ? "Sending…" : state === "error" ? "Try again" : "Send the pack ↗"}
         </button>
       </div>
-      <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-ink-3">
+      <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
         One email · No follow-up sequence · Unsubscribe at the bottom of every email
       </span>
     </form>

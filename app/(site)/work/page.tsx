@@ -1,120 +1,89 @@
-import Image from "next/image";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { SectionHead } from "@/components/ui/SectionHead";
+import { Photo } from "@/components/photo/Photo";
 import { PressList } from "@/components/ui/PressList";
-import { ClosingCta } from "@/components/ui/ClosingCta";
 import { SERIES } from "@/content/series";
-import { PRESS } from "@/content/press";
+import { PRESS, PRESS_VERIFIED } from "@/content/press";
+import { getAllPhotos, getSeriesPhotos, seriesCover } from "@/lib/photos";
 
-export const metadata = { title: "Work" };
+export const metadata: Metadata = {
+  title: "Work",
+  description: "Six ongoing street photography series from New York — subway windows, nights, steam, hard light, rain and snow.",
+  alternates: { canonical: "/work" },
+};
 
 export default function WorkPage() {
+  const totalFrames = getAllPhotos().length;
+
   return (
     <>
-      <PageHeader
-        num="02"
-        mastCenter="Personal & documentary practice"
-        mastRight={
-          <>
-            <span>6 series</span><span>·</span>
-            <span>580+ frames</span><span>·</span>
-            <span>2022—now</span>
-          </>
-        }
-        title={<>Personal <em>Work</em></>}
-        lede="Six ongoing series. Each picks one neighborhood, one behavior, one hour — and stays there until something honest shows up. The street work is the part of the practice the algorithm can't touch."
-      />
+      <header className="px-pad pt-8 pb-12">
+        <div className="flex items-center justify-between border-b border-line-soft pb-3 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3">
+          <span className="text-ink">Work</span>
+          <span className="tabular-nums">
+            {String(SERIES.length).padStart(2, "0")} series · {totalFrames} frames
+          </span>
+        </div>
+        <p className="mt-10 mb-0 max-w-[52ch] text-[clamp(18px,1.8vw,22px)] leading-[1.45] text-ink-2 [text-wrap:pretty]">
+          Six ongoing series. Each picks one neighborhood, one behavior, one hour — and stays there until something
+          honest shows up.
+        </p>
+      </header>
 
-      <section className="px-pad">
-        {SERIES.map((s, i) => {
-          const stats = [
-            { t: "Frames", d: s.frames as React.ReactNode },
-            { t: "Edit", d: s.edit as React.ReactNode },
-            { t: "Status", d: s.status },
-            { t: "Started", d: s.started as React.ReactNode },
-          ].filter(({ d }) => d !== "—");
-          const statCols =
-            stats.length <= 2 ? "grid-cols-2" :
-            stats.length === 3 ? "grid-cols-2 md:grid-cols-3" :
-            "grid-cols-2 md:grid-cols-4";
-
+      {/* Series index: large names, hover reveals the cover (desktop); covers inline on mobile. */}
+      <ol className="m-0 list-none px-pad pb-pad-y">
+        {SERIES.map((s) => {
+          const cover = seriesCover(s);
+          const count = getSeriesPhotos(s.slug).length;
           return (
-          <article
-            key={s.number}
-            className={`
-              grid items-center gap-14 border-b border-line-hair py-16
-              md:grid-cols-2
-              ${i % 2 === 1 ? "[&>*:first-child]:md:order-2" : ""}
-            `}
-          >
-            <Link
-              href={`/work/${s.slug}`}
-              aria-label={`View ${s.titleText}`}
-              className="group relative block aspect-[4/3] w-full overflow-hidden bg-bg-2"
-            >
-              <Image
-                src={s.image}
-                alt={s.alt}
-                fill
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover transition-transform duration-[700ms] ease-editorial group-hover:scale-[1.03]"
-              />
-            </Link>
-            <div className="flex flex-col gap-[18px]">
-              <div className="flex items-baseline justify-between font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
-                <span className="font-semibold text-accent">{s.number}</span>
-                <span>{s.category}</span>
-              </div>
-              <h2 className="m-0 font-serif font-extralight text-[clamp(36px,4.4vw,68px)] leading-none tracking-[-0.03em]">
-                {s.title}
-              </h2>
-              <p className="m-0 max-w-[50ch] font-serif font-light text-[17px] leading-[1.5] text-ink-2">
-                {s.description}
-              </p>
-              <dl className={`grid gap-x-8 gap-y-3 border-t border-line-hair pt-4 ${statCols}`}>
-                {stats.map(({ t, d }) => (
-                  <div key={t} className="flex flex-col gap-1">
-                    <dt className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">{t}</dt>
-                    <dd className="m-0 font-serif text-[16px] font-light text-ink">{d}</dd>
-                  </div>
-                ))}
-              </dl>
-              <div>
-                <Link
-                  href={`/work/${s.slug}`}
-                  className="
-                    inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5
-                    font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-ink
-                    transition-colors duration-[260ms] ease-editorial
-                    hover:bg-ink hover:text-bg
-                  "
+            <li key={s.slug} className="border-t border-line-hair last:border-b">
+              <Link
+                href={`/work/${s.slug}`}
+                className="group relative grid grid-cols-[1fr_auto] items-center gap-x-6 gap-y-4 py-6 md:grid-cols-[64px_1fr_auto] md:py-5"
+              >
+                <span className="hidden font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 md:block">
+                  N°{s.number}
+                </span>
+                <span className="flex items-start gap-2">
+                  <span className="text-[clamp(40px,7.5vw,112px)] font-medium leading-[0.95] tracking-[-0.045em] transition-colors duration-[260ms] group-hover:text-ink-2">
+                    {s.title}
+                  </span>
+                  <sup className="mt-[0.6em] font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 tabular-nums">
+                    {String(count).padStart(2, "0")}
+                  </sup>
+                </span>
+                <span className="hidden text-right font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 sm:block">
+                  {s.category}
+                  <br />
+                  <span className="text-ink-2">{s.status}</span>
+                </span>
+
+                {/* Mobile: cover inline */}
+                <span className="col-span-full md:hidden">
+                  <Photo photo={cover} alt="" sizes="100vw" className="max-h-[60vh] w-auto" />
+                </span>
+
+                {/* Desktop: floating cover on hover/focus */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute right-[22%] top-1/2 z-10 hidden w-[min(28vw,380px)] -translate-y-1/2 opacity-0 transition-opacity duration-[260ms] group-hover:opacity-100 group-focus-visible:opacity-100 md:block"
                 >
-                  View series <span aria-hidden>↗</span>
-                </Link>
-              </div>
-            </div>
-          </article>
+                  <Photo photo={cover} alt="" sizes="380px" className="w-full" />
+                </span>
+              </Link>
+            </li>
           );
         })}
-      </section>
+      </ol>
 
-      <section id="editorial" className="px-pad pb-pad-y">
-        <SectionHead num="02.B" label="Editorial credits" date="Selected · 2024 — 2026" />
-        <div className="px-pad">
+      {PRESS_VERIFIED && (
+        <section id="editorial" className="px-pad pb-pad-y">
+          <h2 className="mb-6 font-mono text-[11px] font-normal uppercase tracking-[0.08em] text-ink-3">
+            Editorial credits
+          </h2>
           <PressList items={PRESS} />
-        </div>
-      </section>
-
-      <ClosingCta
-        eyebrow="§ 02.C · For editors"
-        headline={<>Pitching <em>this</em>?</>}
-        body="Editors: full-resolution research portfolios available on request, plus project notes and locations. Reply within two business days."
-        actions={[
-          { label: "Request portfolio", href: "/contact?type=editorial", primary: true },
-          { label: "editorial@mannydevelops.com", href: "mailto:editorial@mannydevelops.com" },
-        ]}
-      />
+        </section>
+      )}
     </>
   );
 }
