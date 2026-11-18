@@ -43,7 +43,6 @@ export default function AboutPage() {
               Artist statement
             </h2>
             <p className="m-0 font-sans font-light text-[clamp(20px,2.2vw,28px)] leading-[1.4] tracking-[-0.012em]">
-              {/* TODO(manny): statement trimmed to street-only after removing the portrait practice — review the wording. */}
               I photograph what&apos;s already there.
             </p>
             <p className="m-0 font-sans font-light text-[17px] leading-[1.55] text-ink-2">
