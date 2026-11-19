@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { GA_ID, useConsent } from "@/lib/consent";
 
 const STORAGE_KEY = "mp-optin-dismissed";
 
@@ -18,6 +19,9 @@ export function StickyOptin() {
   const [email, setEmail] = useState("");
   // Stay out of the way where the photographs are the whole point.
   const onWorkPage = usePathname().startsWith("/work");
+  // Wait for the cookie banner to be answered so the two never stack.
+  const consent = useConsent();
+  const bannerOpen = Boolean(GA_ID) && (consent === null || consent === "unknown");
 
   useEffect(() => {
     // Already dismissed: stay "hidden" and never listen for scroll.
@@ -57,7 +61,7 @@ export function StickyOptin() {
     setTimeout(dismiss, 1400);
   };
 
-  if (onWorkPage || state === "hidden" || state === "dismissed") return null;
+  if (onWorkPage || bannerOpen || state === "hidden" || state === "dismissed") return null;
 
   return (
     <aside

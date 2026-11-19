@@ -3,6 +3,8 @@ import { Fraunces, Archivo, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import "./globals.css";
 import { SITE } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
+import { ConsentedAnalytics } from "@/components/analytics/Analytics";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -51,7 +53,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
           {children}
+          <ConsentedAnalytics />
         </ThemeProvider>
+        {/* Cookieless, so it needs no consent. */}
+        <Analytics />
       </body>
     </html>
   );
