@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { INSTAGRAM } from "@/lib/site";
+import { CookieSettingsButton } from "@/components/analytics/Analytics";
 
 type Column = { heading: string; items: Array<{ label: string; href?: string }> };
 
@@ -82,7 +83,10 @@ export function Footer() {
       <div className="flex flex-wrap items-center justify-between gap-3 pt-5 font-mono text-[10.5px] uppercase tracking-[0.08em] text-ink-3">
         <span>© {new Date().getFullYear()} Manuel Peña</span>
         <span>Street photography · New York City</span>
-        <span>v2.0 · Street edition</span>
+        <span className="flex items-center gap-4">
+          <CookieSettingsButton />
+          <span>v2.0 · Street edition</span>
+        </span>
       </div>
     </footer>
   );
