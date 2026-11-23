@@ -33,6 +33,12 @@ const EASE = "cubic-bezier(0.2, 0.6, 0.2, 1)";
 const ZOOM_MS = 420;
 const FADE_MS = 200;
 const CROSSFADE_MS = 320;
+// Crossfade: the incoming frame fades in on top; the outgoing one starts
+// fading a beat later so the overlap never dips to black.
+const FADE_IN = { duration: 460, easing: "cubic-bezier(0.4, 0, 0.2, 1)" };
+const FADE_OUT = { duration: 340, delay: 180, easing: "cubic-bezier(0.4, 0, 0.2, 1)" };
+
+type Slot = { photo: ViewerPhoto; token: number } | null;
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -58,16 +64,22 @@ export function Viewer({ seriesSlug, seriesTitle, photos, index: initialIndex, m
   const router = useRouter();
   const dialogRef = useRef<HTMLDivElement>(null);
   const backdropRef = useRef<HTMLDivElement>(null);
-  const currentImgRef = useRef<HTMLImageElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
   const touchX = useRef<number | null>(null);
   const closing = useRef(false);
 
   const [index, setIndex] = useState(initialIndex);
-  // The frame fading out while the new one fades in, and whether the new one is ready.
-  const [outgoing, setOutgoing] = useState<ViewerPhoto | null>(null);
-  const [ready, setReady] = useState(true);
-  const [stepped, setStepped] = useState(false);
+
+  // Two persistent image slots. The visible ("front") one is never remounted;
+  // the next frame loads into the other slot, decodes, then crossfades in.
+  const [slots, setSlots] = useState<[Slot, Slot]>([{ photo: photos[initialIndex], token: 0 }, null]);
+  const slotEls = useRef<(HTMLDivElement | null)[]>([null, null]);
+  const imgEls = useRef<(HTMLImageElement | null)[]>([null, null]);
+  const front = useRef(0);
+  const frontPhoto = useRef(photos[initialIndex]);
+  const pendingToken = useRef<number | null>(null);
+  const fading = useRef<{ incoming: number; anims: Animation[] } | null>(null);
+  const tokenSeq = useRef(0);
 
   const total = photos.length;
   const photo = photos[index];
@@ -76,6 +88,48 @@ export function Viewer({ seriesSlug, seriesTitle, photos, index: initialIndex, m
   const prev = photos[prevIndex];
   const next = photos[nextIndex];
   const seriesHref = `/work/${seriesSlug}`;
+
+  /** Make slot k the visible one, with no animation left running. */
+  const settle = useCallback((k: number) => {
+    fading.current = null;
+    front.current = k;
+    const inEl = slotEls.current[k];
+    const outEl = slotEls.current[1 - k];
+    if (inEl) inEl.style.opacity = "1";
+    if (outEl) outEl.style.opacity = "0";
+  }, []);
+
+  /** Jump any running crossfade to its end, so a new step starts clean. */
+  const finishFade = useCallback(() => {
+    const f = fading.current;
+    if (!f) return;
+    for (const a of f.anims) a.cancel();
+    settle(f.incoming);
+  }, [settle]);
+
+  const crossfadeTo = useCallback(
+    (k: number, p: ViewerPhoto) => {
+      frontPhoto.current = p;
+      const inEl = slotEls.current[k];
+      const outEl = slotEls.current[1 - k];
+      if (!inEl || !outEl || prefersReducedMotion()) return settle(k);
+      inEl.style.zIndex = "2";
+      outEl.style.zIndex = "1";
+      const anims = [
+        inEl.animate([{ opacity: 0 }, { opacity: 1 }], { ...FADE_IN, fill: "forwards" }),
+        outEl.animate([{ opacity: 1 }, { opacity: 0 }], { ...FADE_OUT, fill: "forwards" }),
+      ];
+      fading.current = { incoming: k, anims };
+      Promise.all(anims.map((a) => a.finished))
+        .then(() => {
+          if (fading.current?.anims !== anims) return;
+          settle(k);
+          for (const a of anims) a.cancel();
+        })
+        .catch(() => {});
+    },
+    [settle],
+  );
 
   const chrome = () => Array.from(dialogRef.current?.querySelectorAll<HTMLElement>("[data-chrome]") ?? []);
 
@@ -87,8 +141,9 @@ export function Viewer({ seriesSlug, seriesTitle, photos, index: initialIndex, m
 
     if (prefersReducedMotion()) return navigate();
 
-    const img = currentImgRef.current;
-    const tile = mode === "modal" ? findTile(photo.src, dialogRef.current) : null;
+    finishFade();
+    const img = imgEls.current[front.current];
+    const tile = mode === "modal" ? findTile(frontPhoto.current.src, dialogRef.current) : null;
     const fades = [backdropRef.current, ...chrome()]
       .filter((el): el is HTMLElement => !!el)
       .map((el) => el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: FADE_MS + 80, easing: EASE, fill: "forwards" }));
@@ -112,29 +167,36 @@ export function Viewer({ seriesSlug, seriesTitle, photos, index: initialIndex, m
       await Promise.all(fades.map((a) => a.finished));
     }
     navigate();
-  }, [mode, photo.src, router, seriesHref]);
+  }, [finishFade, mode, router, seriesHref]);
 
   // ── Step: crossfade in place and update the URL without navigating ───────
   const step = useCallback(
     (i: number) => {
       if (closing.current || i === index) return;
       const p = photos[i];
-      // If the current frame hasn't finished fading in, keep the older one as
-      // the outgoing layer so nothing flashes.
-      if (ready) setOutgoing(photo);
-      setReady(false);
-      setStepped(true);
+      finishFade();
+      // Load the frame into the hidden slot; onLoad → decode → crossfade.
+      const back = 1 - front.current;
+      const token = ++tokenSeq.current;
+      pendingToken.current = token;
+      const backEl = slotEls.current[back];
+      if (backEl) backEl.style.opacity = "0";
+      setSlots((s) => {
+        const n: [Slot, Slot] = [s[0], s[1]];
+        n[back] = { photo: p, token };
+        return n;
+      });
       setIndex(i);
       window.history.replaceState(null, "", `${seriesHref}/${p.id}`);
       document.title = `${p.label} · ${seriesTitle} · Manuel Peña`;
     },
-    [index, photo, photos, ready, seriesHref, seriesTitle],
+    [finishFade, index, photos, seriesHref, seriesTitle],
   );
 
   // ── Open: zoom out of the clicked tile, or fade up ────────────────────────
   useLayoutEffect(() => {
     const dialog = dialogRef.current;
-    const img = currentImgRef.current;
+    const img = imgEls.current[0];
     const backdrop = backdropRef.current;
     if (!dialog || !img || !backdrop) return;
     const origin = takeOrigin(photos[initialIndex].src);
@@ -264,7 +326,6 @@ export function Viewer({ seriesSlug, seriesTitle, photos, index: initialIndex, m
   }, [index]);
 
   const meta = [photo.label, photo.place, photo.year].filter(Boolean).join(" · ");
-  const layer = "col-start-1 row-start-1 flex min-h-0 items-center justify-center";
   const imgClass = "h-auto max-h-full w-auto max-w-full object-contain";
 
   return (
@@ -307,44 +368,54 @@ export function Viewer({ seriesSlug, seriesTitle, photos, index: initialIndex, m
         </Link>
       </div>
 
-      {/* Stage: the current frame, with the previous one fading out on top of the same spot */}
+      {/* Stage: two stacked slots; the next frame crossfades in over the current one */}
       <div className="relative grid min-h-0 grid-cols-1 grid-rows-1 px-4 md:px-20">
-        {outgoing && outgoing.src !== photo.src && (
+        {slots.map((slot, k) => (
           <div
-            aria-hidden
-            className={`${layer} pointer-events-none transition-opacity duration-[320ms] ease-editorial ${ready ? "opacity-0" : "opacity-100"}`}
-            onTransitionEnd={() => setOutgoing(null)}
+            key={k}
+            ref={(el) => {
+              slotEls.current[k] = el;
+            }}
+            aria-hidden={slot?.photo.src !== photo.src || undefined}
+            className="col-start-1 row-start-1 flex min-h-0 items-center justify-center [will-change:opacity]"
           >
-            <Image
-              src={outgoing.src}
-              alt=""
-              width={outgoing.width}
-              height={outgoing.height}
-              sizes={VIEW_SIZES}
-              className={imgClass}
-            />
+            {slot && (
+              <Image
+                key={`${slot.photo.src}:${slot.token}`}
+                ref={(el) => {
+                  imgEls.current[k] = el;
+                }}
+                data-token={slot.token}
+                src={slot.photo.src}
+                alt={slot.photo.alt}
+                width={slot.photo.width}
+                height={slot.photo.height}
+                sizes={VIEW_SIZES}
+                priority={slot.token === 0}
+                // Blur placeholder only for the frame the viewer opened on; after
+                // that, the previous frame stays up until the next is decoded.
+                placeholder={slot.token === 0 ? "blur" : "empty"}
+                blurDataURL={slot.photo.blurDataURL}
+                onLoad={(e) => {
+                  const img = e.currentTarget;
+                  const token = Number(img.dataset.token);
+                  if (token !== pendingToken.current) return;
+                  // Decode off the main thread before fading, so the fade
+                  // doesn't stall on the first painted frame.
+                  img
+                    .decode()
+                    .catch(() => {})
+                    .then(() => {
+                      if (token !== pendingToken.current) return; // stepped again meanwhile
+                      pendingToken.current = null;
+                      crossfadeTo(k, slot.photo);
+                    });
+                }}
+                className={imgClass}
+              />
+            )}
           </div>
-        )}
-        <div
-          className={`${layer} transition-opacity duration-[320ms] ease-editorial ${ready ? "opacity-100" : "opacity-0"}`}
-        >
-          <Image
-            key={photo.src}
-            ref={currentImgRef}
-            src={photo.src}
-            alt={photo.alt}
-            width={photo.width}
-            height={photo.height}
-            sizes={VIEW_SIZES}
-            priority={!stepped}
-            // The blur placeholder only for the first frame; after that the
-            // previous frame stays visible until this one is ready.
-            placeholder={stepped ? "empty" : "blur"}
-            blurDataURL={photo.blurDataURL}
-            onLoad={() => setReady(true)}
-            className={imgClass}
-          />
-        </div>
+        ))}
         {total > 1 && (
           <>
             <button
