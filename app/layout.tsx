@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ConsentedAnalytics } from "@/components/analytics/Analytics";
 
 const fraunces = Fraunces({
@@ -55,8 +56,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <ConsentedAnalytics />
         </ThemeProvider>
-        {/* Cookieless, so it needs no consent. */}
+        {/* Both cookieless, so they need no consent. */}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
