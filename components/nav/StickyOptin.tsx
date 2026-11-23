@@ -34,13 +34,16 @@ export function StickyOptin() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const [leaving, setLeaving] = useState(false);
+
   const dismiss = () => {
     try {
       window.localStorage.setItem(STORAGE_KEY, "1");
     } catch {
       // Storage blocked (private mode): it just won't be remembered.
     }
-    setState("dismissed");
+    // Play the exit animation; onAnimationEnd then removes the bar.
+    setLeaving(true);
   };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -73,9 +76,15 @@ export function StickyOptin() {
         py-2.5 pl-4 pr-2.5 md:pl-[22px]
         shadow-[0_16px_40px_-12px_rgba(0,0,0,0.35)]
         max-w-[calc(100%-32px)]
-        animate-[so-rise_0.45s_cubic-bezier(0.2,0.6,0.2,1)]
       "
-      style={{ ['--rise' as string]: '' }}
+      style={{
+        animation: leaving
+          ? "so-sink var(--dur-fast) var(--ease-editorial) forwards"
+          : "so-rise 0.45s var(--ease-editorial)",
+      }}
+      onAnimationEnd={() => {
+        if (leaving) setState("dismissed");
+      }}
     >
       {state === "shown" && (
         <>
