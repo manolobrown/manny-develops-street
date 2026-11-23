@@ -1,7 +1,8 @@
 "use client";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { GA_ID, resetConsent, setConsent, useConsent } from "@/lib/consent";
+import { useState } from "react";
+import { GA_ID, resetConsent, setConsent, useConsent, type Consent } from "@/lib/consent";
 
 /**
  * Google Analytics loads only after the visitor accepts. Until they choose,
@@ -10,6 +11,8 @@ import { GA_ID, resetConsent, setConsent, useConsent } from "@/lib/consent";
  */
 export function ConsentedAnalytics() {
   const consent = useConsent();
+  // The choice being animated out; it is saved when the exit animation ends.
+  const [leaving, setLeaving] = useState<Consent>(null);
   if (!GA_ID || consent === "unknown") return null;
 
   if (consent === "granted") return <GoogleAnalytics gaId={GA_ID} />;
@@ -18,6 +21,14 @@ export function ConsentedAnalytics() {
   return (
     <aside
       aria-label="Analytics cookies"
+      onAnimationEnd={() => {
+        if (leaving) setConsent(leaving);
+      }}
+      style={{
+        animation: leaving
+          ? "sink-out var(--dur-fast) var(--ease-editorial) forwards"
+          : "rise-in var(--dur-base) var(--ease-editorial)",
+      }}
       className="
         fixed inset-x-4 bottom-4 z-[70] mx-auto flex max-w-[640px] flex-col gap-4
         bg-ink p-5 text-bg shadow-[0_18px_40px_-12px_rgba(0,0,0,0.45)]
@@ -30,14 +41,14 @@ export function ConsentedAnalytics() {
       <div className="flex shrink-0 gap-2">
         <button
           type="button"
-          onClick={() => setConsent("denied")}
+          onClick={() => setLeaving("denied")}
           className="border border-bg/30 px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.08em] text-bg transition-colors hover:border-bg"
         >
           No thanks
         </button>
         <button
           type="button"
-          onClick={() => setConsent("granted")}
+          onClick={() => setLeaving("granted")}
           className="bg-bg px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.08em] text-ink transition-opacity hover:opacity-85"
         >
           Accept

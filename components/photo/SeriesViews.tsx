@@ -58,9 +58,12 @@ export function SeriesViews({ photos }: { photos: PhotoData[] }) {
         </div>
       </div>
 
-      {view === "sequence" && <Sequence photos={photos} />}
-      {view === "grid" && <Grid photos={photos} />}
-      {view === "index" && <Index photos={photos} />}
+      {/* Keyed so a view switch fades the new layout in instead of swapping it. */}
+      <div key={view} className="motion-safe:animate-[fade-in_var(--dur-base)_var(--ease-editorial)]">
+        {view === "sequence" && <Sequence photos={photos} />}
+        {view === "grid" && <Grid photos={photos} />}
+        {view === "index" && <Index photos={photos} />}
+      </div>
     </section>
   );
 }

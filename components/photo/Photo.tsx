@@ -28,6 +28,8 @@ export function Photo({ photo, sizes, priority = false, className = "", alt }: P
       placeholder="blur"
       blurDataURL={photo.blurDataURL}
       className={`h-auto bg-bg-2 ${className}`}
+      // Lets the viewer find this tile again to zoom from and back into it.
+      data-photo={photo.src}
     />
   );
 }
